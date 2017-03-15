@@ -1,0 +1,48 @@
+{
+  "name": "teachmesilence.com",
+  "version": "1.0.0",
+  "description": "Simply photoblog build with react, redux, nextjs and contentful.",
+  "repository": "git@github.com:lzgrzebski/teachmesilence.com.git",
+  "scripts": {
+    "dev": "next src",
+    "build": "next build src",
+    "start": "next start src"
+  },
+  "author": "lzgrzebski",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.2.1",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.0",
+    "babel-plugin-transform-async-to-generator": "^6.22.0",
+    "babel-preset-latest": "^6.22.0",
+    "babel-preset-react": "^6.1.18",
+    "babel-preset-stage-0": "^6.22.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0"
+  },
+  "dependencies": {
+    "blazy": "^1.8.2",
+    "contentful": "^3.8.1",
+    "inuit-box-sizing": "^0.2.0",
+    "inuit-mixins": "^0.2.3",
+    "inuit-normalize": "^4.1.1",
+    "inuit-page": "^0.2.1",
+    "inuit-reset": "^0.1.1",
+    "inuit-responsive-settings": "^0.1.5",
+    "inuit-responsive-tools": "^0.1.3",
+    "inuit-shared": "^0.1.5",
+    "lodash.debounce": "^4.0.8",
+    "next": "^2.0.0-beta.38",
+    "next-redux-wrapper": "^1.0.0",
+    "node-sass": "^4.5.0",
+    "raw-loader": "^0.5.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^4.0.0",
+    "redux": "^3.0.4",
+    "redux-thunk": "^2.2.0",
+    "sass-loader": "^6.0.2"
+  }
+}

@@ -1,0 +1,26 @@
+//settings
+@import "settings";
+@import "~inuit-responsive-settings/settings.responsive";
+
+//generic
+@import "~inuit-normalize/generic.normalize";
+@import "~inuit-reset/generic.reset";
+@import "~inuit-box-sizing/generic.box-sizing";
+@import "~inuit-shared/generic.shared";
+
+//tools
+@import "~inuit-responsive-tools/tools.responsive";
+@import "~inuit-mixins/tools.mixins";
+@import "tools.mixins";
+@import "tools.sprite";
+
+//base
+@import "~inuit-page/base.page";
+@import "base.page";
+@import "base.links";
+@import "base.images";
+@import "base.icons";
+@import "base.fonts";
+
+//objects
+@import "objects.wrapper";

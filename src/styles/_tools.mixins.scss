@@ -1,0 +1,27 @@
+@mixin vendor($property, $value...) {
+    -webkit-#{$property}: $value;
+       -moz-#{$property}: $value;
+            #{$property}: $value;
+}
+
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model; // Safari <= 5
+     -moz-box-sizing: $box-model; // Firefox <= 19
+          box-sizing: $box-model;
+}
+
+@mixin font-weight($font-weight) {
+
+    @if ($font-weight == "regular") {
+        font-weight: 400;
+    }
+
+    @if ($font-weight == "bold") {
+        font-weight: 700;
+    }
+
+}
+
+@mixin font-size($args...) {
+    @include inuit-font-size($args...);
+}

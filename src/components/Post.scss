@@ -1,0 +1,33 @@
+.Post {
+  margin-bottom:30px;
+}
+
+  .Post__title {
+    font-family: tms-header,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
+    @include font-size(53px);
+    letter-spacing: -.02em;
+
+    margin-top: $inuit-base-spacing-unit--tiny;
+    margin-bottom: $inuit-base-spacing-unit--small;
+
+    @include media-query(lap-and-up) {
+
+    }
+
+  }
+
+  .Post__text {
+      font-family: tms-text,Georgia,Cambria,"Times New Roman",Times,serif;
+      @include font-weight(regular);
+
+      line-height: 1.58;
+      letter-spacing: -.003em;
+
+      white-space: pre-line;
+
+      margin-bottom: 53px;
+  }
+
+  .article__image {
+      margin-bottom: $inuit-base-spacing-unit;
+  }

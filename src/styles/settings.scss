@@ -1,0 +1,14 @@
+//inuit css
+$inuit-base-font-size:          21px !default;
+$inuit-base-line-height:        33.18px !default;
+$inuit-base-text-color:         rgba(0,0,0,.8) !default;
+$inuit-base-background-color:   #fff !default;
+
+$inuit-base-spacing-unit:           $inuit-base-line-height;
+$inuit-base-spacing-unit--tiny:     round($inuit-base-spacing-unit / 4);
+$inuit-base-spacing-unit--small:    round($inuit-base-spacing-unit / 2);
+$inuit-base-spacing-unit--large:    round($inuit-base-spacing-unit * 2);
+$inuit-base-spacing-unit--huge:     round($inuit-base-spacing-unit * 4);
+
+//colors
+$color-links: #ff5a5f;
