@@ -7,7 +7,7 @@ function calculatePadding(width, height) {
   return 100 / ratio;
 }
 
-export default function Photo({ url, title, width, height }) {
+export default function CoverPhoto({ url, title, width, height }) {
   return (
     <picture
       className="Photo"
@@ -23,24 +23,20 @@ export default function Photo({ url, title, width, height }) {
       />
       <source
         media="(max-width: 768px)"
-        data-srcset={`${url}?fm=jpg&fl=progressive&w=768, ${url}?fm=jpg&fl=progressive&w=1536 2x`}
-      />
-      <source
-        media="(min-width: 769px)"
-        data-srcset={`${url}?fm=jpg&fl=progressive&w=1050, ${url}?fm=jpg&fl=progressive&w=2100 2x`}
+        data-srcset={`${url}?fm=jpg&fl=progressive&w=375, ${url}?fm=jpg&fl=progressive&w=750 2x`}
       />
       <img
         alt={title}
         className="b-lazy Photo__element"
         src={DEFAULT_IMAGE}
-        data-src={`${url}?fm=jpg&fl=progressive&w=1050|${url}?fm=jpg&fl=progressive&w=2100`}
+        data-src={`${url}?fm=jpg&fl=progressive&w=1980|${url}?fm=jpg&fl=progressive&w=3960`}
         width={width} height={height}
       />
     </picture>
   );
 }
 
-Photo.propTypes = {
+CoverPhoto.propTypes = {
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   width: PropTypes.number.isRequired,

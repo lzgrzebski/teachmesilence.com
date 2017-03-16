@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
 
 import Photo from './Photo';
+import CoverPhoto from './CoverPhoto';
 
 export default function Post({ title, description, photos, cover }) {
   return (
     <article className="Post">
-      <Photo {...cover} />
+      <CoverPhoto {...cover} />
       <div className="o-wrapper">
         <section className="o-wrapper-text">
           <h1 className="Post__title">{title}</h1>
