@@ -12,7 +12,7 @@
     margin-top: $inuit-base-spacing-unit--tiny;
     margin-bottom: $inuit-base-spacing-unit--small;
 
-    @include media-query(lap-and-up) {
+    @include mq($from: tablet) {
       @include font-size(53px); 
     }
 
@@ -28,8 +28,8 @@
 
       margin-bottom: 40px;
 
-      @include media-query(lap-and-up) {
-        @include font-size(21px); 
+      @include mq($from: tablet) {
+        @include font-size(21px, 1.58); 
         letter-spacing: -.003em;
 
         margin-bottom: 53px;    

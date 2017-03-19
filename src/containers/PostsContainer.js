@@ -8,6 +8,8 @@ import { fetchPosts } from '../actions/index';
 
 import Posts from '../components/Posts';
 
+const OFFSET = 500;
+
 class PostsContainer extends Component {
   static propTypes = {
     posts: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -32,7 +34,6 @@ class PostsContainer extends Component {
 
   handleScroll = () => {
     const wrap = document.getElementsByTagName('body')[0];
-    const OFFSET = 500;
     const contentHeight = wrap.offsetHeight;
     const yOffset = window.pageYOffset;
     const y = yOffset + window.innerHeight + OFFSET;
@@ -45,6 +46,7 @@ class PostsContainer extends Component {
     return (
       <main onScroll={this.handleScroll}>
         {this.props.posts && <Posts posts={this.props.posts} />}
+        {this.props.isFetching ? `fetching ${this.props.page}` : `nofetching ${this.props.page}`}
       </main>
     );
   }

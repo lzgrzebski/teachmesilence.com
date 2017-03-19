@@ -1,7 +1,6 @@
 import { createClient } from 'contentful';
+import { SPACE_ID, ACCESS_TOKEN } from './config';
 
-const SPACE_ID = 'k3oz0f9ubslk';
-const ACCESS_TOKEN = '3da69f3b928801651de220587c7614c8f2146b81b583c1005b173170202dc843';
 const POST_CONTENT_TYPE = 'post';
 const LIMIT = 1;
 const ORDERBY = 'sys.createdAt';

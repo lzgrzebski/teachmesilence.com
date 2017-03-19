@@ -1,26 +1,30 @@
 //settings
-@import "settings";
-@import "~inuit-responsive-settings/settings.responsive";
-
-//generic
-@import "~inuit-normalize/generic.normalize";
-@import "~inuit-reset/generic.reset";
-@import "~inuit-box-sizing/generic.box-sizing";
-@import "~inuit-shared/generic.shared";
+@import "settings/settings";
+@import "~inuitcss/settings/settings.core";
 
 //tools
-@import "~inuit-responsive-tools/tools.responsive";
-@import "~inuit-mixins/tools.mixins";
-@import "tools.mixins";
-@import "tools.sprite";
+@import "~inuitcss/tools/tools.rem";
+@import "~inuitcss/tools/tools.font-size";
+@import "~inuitcss/tools/tools.clearfix";
+@import "~inuitcss/tools/tools.hidden";
+@import "~sass-mq/mq";
+@import "tools/tools.aliases";
+@import "tools/tools.mixins";
+@import "tools/tools.sprite";
 
-//base
-@import "~inuit-page/base.page";
-@import "base.page";
-@import "base.links";
-@import "base.images";
-@import "base.icons";
-@import "base.fonts";
+//generic
+@import "~inuitcss/generic/generic.box-sizing";
+@import "~inuitcss/generic/generic.normalize";
+@import "~inuitcss/generic/generic.reset";
+@import "~inuitcss/generic/generic.shared";
+
+//elements
+@import "~inuitcss/elements/elements.page";
+@import "elements/elements.page";
+@import "elements/elements.links";
+@import "elements/elements.images";
+@import "elements/elements.icons";
+@import "elements/elements.fonts";
 
 //objects
-@import "objects.wrapper";
+@import "objects/objects.wrapper";

@@ -32,7 +32,6 @@ export default function Photo({ url, title, width, height }) {
       <img
         alt={title}
         className="b-lazy Photo__element"
-        src={DEFAULT_IMAGE}
         data-src={`${url}?fm=jpg&fl=progressive&w=1050|${url}?fm=jpg&fl=progressive&w=2100`}
         width={width} height={height}
       />

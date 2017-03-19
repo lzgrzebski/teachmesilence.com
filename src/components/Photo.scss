@@ -8,6 +8,24 @@
   overflow: hidden;
 
   margin-bottom: $inuit-base-spacing-unit;
+
+  background:#e1e1e1;
+
+  &.Photo--large {
+    display:none
+  }
+
+  @include mq($from: tablet) {
+      &.Photo--large {
+        display:block;
+      }
+
+      &.Photo--mobile {
+        display:none;
+      }
+
+  }
+
 }
 
   .Photo__element {
@@ -29,7 +47,7 @@
              -o-transition: opacity 500ms ease-in-out;
                 transition: opacity 500ms ease-in-out;
                  max-width: 100%;
-                   opacity: 0.5;
+                   opacity: 0;
     }
 
     .b-lazy.b-loaded {
