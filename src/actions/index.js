@@ -21,10 +21,10 @@ function shouldFetchPosts(isLastPage, isFetching) {
 }
 
 // async action to establish connection and fetch posts
-export const fetchPosts = (page = 0, isLastPage = false, isFetching = false) => (dispatch) => {
+export const fetchPosts = (slug = '', page = 0, isLastPage = false, isFetching = false) => (dispatch) => {
   if (shouldFetchPosts(isLastPage, isFetching)) {
     dispatch(requestPosts());
-    return callApi(page, isLastPage)
+    return callApi(page, slug)
             .then(({ posts, isLastPageNow, newPage }) =>
               dispatch(receivePosts(posts, isLastPageNow, newPage)));
   }

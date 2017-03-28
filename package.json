@@ -32,7 +32,7 @@
     "contentful": "^3.8.1",
     "inuitcss": "^6.0.0-beta.4",
     "lodash.debounce": "^4.0.8",
-    "next": "^2.0.0-beta.38",
+    "next": "^2.0.0-beta.40",
     "next-redux-wrapper": "^1.0.0",
     "node-sass": "^4.5.0",
     "raw-loader": "^0.5.1",
@@ -40,6 +40,7 @@
     "react-dom": "^15.4.2",
     "react-redux": "^4.0.0",
     "redux": "^3.0.4",
+    "redux-devtools-extension": "^2.13.0",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.2"
   }

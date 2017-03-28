@@ -10,8 +10,8 @@ import App from '../components/App';
 import scss from './index.scss';
 
 class Root extends Component {
-  static getInitialProps({ store }) {
-    return store.dispatch(fetchPosts());
+  static getInitialProps({ store, query: { post } }) {
+    return post ? store.dispatch(fetchPosts(post)) : store.dispatch(fetchPosts());
   }
   render() {
     return (

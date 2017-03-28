@@ -1,18 +1,12 @@
 import React, { PropTypes } from 'react';
-
-const DEFAULT_IMAGE = 'data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==';
-
-function calculatePadding(width, height) {
-  const ratio = width / height;
-  return 100 / ratio;
-}
+import calculatePadding from '../services/helper';
 
 export default function CoverPhoto({ url, title, width, height }) {
   return (
     <div>
       <picture
         className="Photo Photo--mobile"
-        style={{ paddingTop: `${calculatePadding(768, 789)}%` }}
+        style={{ paddingTop: `${calculatePadding(767, 800)}%` }}
       >
         <source
           media="(max-width: 360px)"
@@ -24,13 +18,13 @@ export default function CoverPhoto({ url, title, width, height }) {
         />
         <source
           media="(max-width: 768px)"
-          data-srcset={`${url}?fm=jpg&fl=progressive&w=768&h=789&fit=thumb, ${url}?fm=jpg&fl=progressive&w=1536&h=1579&fit=thumb 2x`}
+          data-srcset={`${url}?fm=jpg&fl=progressive&w=767&h=800&fit=thumb, ${url}?fm=jpg&fl=progressive&w=1536&h=1579&fit=thumb 2x`}
         />
         <img
           alt={title}
           className="b-lazy Photo__element"
           data-src={`${url}?fm=jpg&fl=progressive&w=360&h=385&fit=thumb|${url}?fm=jpg&fl=progressive&w=720&h=740&fit=thumb`}
-          width="768" height="789"
+          width="767" height="800"
         />
       </picture>
       <picture

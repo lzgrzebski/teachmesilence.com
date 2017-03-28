@@ -14,7 +14,7 @@ export default function Post({ title, description, photos, cover }) {
         </section>
         <section>
           {photos.map(photo =>
-            <Photo {...photo} key={photo.id} />,
+            <Photo key={photo.id} {...photo} />,
           )}
         </section>
       </div>

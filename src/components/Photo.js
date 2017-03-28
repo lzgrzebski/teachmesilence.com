@@ -1,11 +1,5 @@
 import React, { PropTypes } from 'react';
-
-const DEFAULT_IMAGE = 'data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==';
-
-function calculatePadding(width, height) {
-  const ratio = width / height;
-  return 100 / ratio;
-}
+import calculatePadding from '../services/helper';
 
 export default function Photo({ url, title, width, height }) {
   return (

@@ -20,7 +20,11 @@ class PostsContainer extends Component {
   }
 
   componentDidMount() {
-    this.lazy = new LazyPhotos({ offset: 1000 });
+    this.lazy = new LazyPhotos({
+      offset: 1000,
+      selector: '.Photo__element',
+      successClass: 'Photo__element--loaded',
+    });
     window.addEventListener('scroll', debounce(this.handleScroll));
   }
   componentDidUpdate() {
@@ -38,7 +42,7 @@ class PostsContainer extends Component {
     const yOffset = window.pageYOffset;
     const y = yOffset + window.innerHeight + OFFSET;
     if (!this.props.isFetching && y >= contentHeight) {
-      this.props.fetchPosts(this.props.page, this.props.isLastPage, this.props.isFetching);
+      this.props.fetchPosts('', this.props.page, this.props.isLastPage, this.props.isFetching);
     }
   }
 
@@ -46,7 +50,6 @@ class PostsContainer extends Component {
     return (
       <main onScroll={this.handleScroll}>
         {this.props.posts && <Posts posts={this.props.posts} />}
-        {this.props.isFetching ? `fetching ${this.props.page}` : `nofetching ${this.props.page}`}
       </main>
     );
   }

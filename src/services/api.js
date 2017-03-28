@@ -55,12 +55,13 @@ function getClient() {
   return store;
 }
 
-export default function callApi(page = 0) {
+export default function callApi(page = 0, slug = '') {
   return getClient().getEntries({
     content_type: POST_CONTENT_TYPE,
     limit: LIMIT,
     skip: page * LIMIT,
     order: ORDERBY,
+    'fields.slug': slug,
   })
     .then(({ total, items, skip }) => {
       const isLastPageNow = LIMIT + skip >= total;
