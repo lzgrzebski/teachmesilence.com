@@ -32,6 +32,7 @@
     "contentful": "^3.8.1",
     "inuitcss": "^6.0.0-beta.4",
     "lodash.debounce": "^4.0.8",
+    "lodash.keyby": "^4.6.0",
     "next": "^2.0.0-beta.40",
     "next-redux-wrapper": "^1.0.0",
     "node-sass": "^4.5.0",

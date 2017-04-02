@@ -7,7 +7,7 @@ export default function Posts({ posts }) {
     <div>
       {
         posts.map(post => (
-          <Post key={post.id} {...post} />
+          <Post key={post.slug} {...post} />
         ),
       )}
     </div>

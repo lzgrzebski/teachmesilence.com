@@ -1,30 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import withRedux from 'next-redux-wrapper';
-import Head from 'next/head';
-import initStore from '../store/configureStore';
+import initStore from '../store';
 
-import { fetchPosts } from '../actions/index';
+import { fetchPosts } from '../store/posts/actions';
 
-import App from '../components/App';
+import Layout from '../components/Layout';
+import PostsContainer from '../containers/PostsContainer';
 
-import scss from './index.scss';
-
-class Root extends Component {
-  static getInitialProps({ store, query: { post } }) {
-    return post ? store.dispatch(fetchPosts(post)) : store.dispatch(fetchPosts());
-  }
-  render() {
-    return (
-      <div>
-        <Head>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        </Head>
-        <style dangerouslySetInnerHTML={{ __html: scss }} />
-        <App />
-      </div>
-    );
-  }
+function IndexPage() {
+  return (
+    <Layout>
+      <PostsContainer />
+    </Layout>
+  );
 }
 
-export default withRedux(initStore)(Root);
+IndexPage.getInitialProps = ({ store }) => store.dispatch(fetchPosts());
+
+export default withRedux(initStore)(IndexPage);

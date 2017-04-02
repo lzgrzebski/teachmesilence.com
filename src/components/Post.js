@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
+import Link from 'next/link';
 
 import Photo from './Photo';
 import CoverPhoto from './CoverPhoto';
 
-export default function Post({ title, description, photos, cover }) {
+export default function Post({ title, description, photos, cover, slug }) {
   return (
     <article className="Post">
       <CoverPhoto {...cover} />
@@ -17,6 +18,7 @@ export default function Post({ title, description, photos, cover }) {
             <Photo key={photo.id} {...photo} />,
           )}
         </section>
+        <Link href={{ pathname: 'post', query: { slug } }}><a>here</a></Link>
       </div>
     </article>
   );
@@ -24,6 +26,7 @@ export default function Post({ title, description, photos, cover }) {
 
 Post.propTypes = {
   title: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   photos: PropTypes.arrayOf(PropTypes.object).isRequired,
   cover: PropTypes.shape({

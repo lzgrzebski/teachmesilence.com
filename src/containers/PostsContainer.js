@@ -1,11 +1,9 @@
+import _debounce from 'lodash.debounce';
 import React, { PropTypes, Component } from 'react';
-import { connect } from 'react-redux';
-import debounce from 'lodash.debounce';
-
 import LazyPhotos from 'blazy';
+import { connect } from 'react-redux';
 
-import { fetchPosts } from '../actions/index';
-
+import { fetchPosts } from '../store/posts/actions';
 import Posts from '../components/Posts';
 
 const OFFSET = 500;
@@ -25,7 +23,7 @@ class PostsContainer extends Component {
       selector: '.Photo__element',
       successClass: 'Photo__element--loaded',
     });
-    window.addEventListener('scroll', debounce(this.handleScroll));
+    window.addEventListener('scroll', _debounce(this.handleScroll));
   }
   componentDidUpdate() {
     if (!this.props.isFetching) {
@@ -33,7 +31,7 @@ class PostsContainer extends Component {
     }
   }
   componentWillUnmount() {
-    window.removeEventListener('scroll', debounce(this.handleScroll));
+    window.removeEventListener('scroll', _debounce(this.handleScroll));
   }
 
   handleScroll = () => {
@@ -42,7 +40,7 @@ class PostsContainer extends Component {
     const yOffset = window.pageYOffset;
     const y = yOffset + window.innerHeight + OFFSET;
     if (!this.props.isFetching && y >= contentHeight) {
-      this.props.fetchPosts('', this.props.page, this.props.isLastPage, this.props.isFetching);
+      this.props.fetchPosts(this.props.page, this.props.isLastPage, this.props.isFetching);
     }
   }
 
@@ -57,7 +55,7 @@ class PostsContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    posts: state.store.posts,
+    posts: Object.values(state.store.posts),
     page: state.store.page,
     isLastPage: state.store.isLastPage,
     isFetching: state.store.isFetching,

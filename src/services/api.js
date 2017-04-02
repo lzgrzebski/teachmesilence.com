@@ -1,3 +1,5 @@
+import _keyBy from 'lodash.keyby';
+
 import { createClient } from 'contentful';
 import { SPACE_ID, ACCESS_TOKEN } from './config';
 
@@ -8,9 +10,14 @@ const ORDERBY = 'sys.createdAt';
 let store;
 
 function normalize(items) {
-  return !items ? [] : items.map((item) => {
-    const { sys: { createdAt, id }, fields } = item;
-    const { title, description } = fields;
+  if (!items) return {}; // if no items skip normalization
+
+  const normalizedItems = items.map((item) => {
+    // normalize post fields
+    const { sys: { createdAt }, fields } = item;
+    const { title, description, slug } = fields;
+
+    // normalize cover photo fields
     const coverFields = fields.cover.fields;
     const cover = {
       title: coverFields.title,
@@ -19,6 +26,7 @@ function normalize(items) {
       height: coverFields.file.details.image.height,
     };
 
+    // normalize photo fields
     const photos = fields.photos.map((photo) => {
       const { fields: { file }, sys } = photo;
       const photoId = sys.id;
@@ -34,8 +42,9 @@ function normalize(items) {
       };
     });
 
+    // return normalized object
     return {
-      id,
+      slug,
       createdAt,
       title,
       description,
@@ -43,6 +52,9 @@ function normalize(items) {
       photos,
     };
   });
+
+  // return posts {slug: {post} }
+  return _keyBy(normalizedItems, 'slug');
 }
 
 function getClient() {
@@ -55,19 +67,26 @@ function getClient() {
   return store;
 }
 
-export default function callApi(page = 0, slug = '') {
+export function getPosts(page = 0) {
   return getClient().getEntries({
     content_type: POST_CONTENT_TYPE,
     limit: LIMIT,
     skip: page * LIMIT,
     order: ORDERBY,
-    'fields.slug': slug,
   })
     .then(({ total, items, skip }) => {
-      const isLastPageNow = LIMIT + skip >= total;
-      const newPage = isLastPageNow ? page : page + 1;
-      return { posts: normalize(items), isLastPageNow, newPage };
+      const isLastPage = LIMIT + skip >= total;
+      const newPage = isLastPage ? page : page + 1;
+      return { posts: normalize(items), page: newPage, isLastPage };
     });
 }
 
 
+export function getSinglePost(slug) {
+  return getClient().getEntries({
+    content_type: POST_CONTENT_TYPE,
+    limit: 1,
+    'fields.slug': slug,
+  })
+    .then(({ items }) => ({ posts: normalize(items), currentPost: slug }));
+}

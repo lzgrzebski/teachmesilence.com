@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import calculatePadding from '../services/helper';
+import calculatePadding from '../services/helpers';
 
 export default function CoverPhoto({ url, title, width, height }) {
   return (
