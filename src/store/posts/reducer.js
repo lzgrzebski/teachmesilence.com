@@ -1,6 +1,7 @@
+import Immutable from 'seamless-immutable';
 import * as types from './actionTypes';
 
-const INITIAL_STATE = {
+const INITIAL_STATE = Immutable({
   posts: {},
   page: 0,
   isLastPage: false,
@@ -8,28 +9,20 @@ const INITIAL_STATE = {
   currentPost: null,
   activePost: null,
   isMenuOpen: false,
-};
+});
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
     case types.REQUEST_POSTS: {
-      return { ...state, isFetching: true };
+      return state.merge({ isFetching: true });
     }
     case types.RECEIVE_POSTS: {
       const { isLastPage, posts, page } = action;
-      return Object.assign(
-        {},
-        state,
-        { posts: { ...state.posts, ...posts }, isLastPage, page, isFetching: false },
-      );
+      return state.merge({ posts, isLastPage, page, isFetching: false }, { deep: true });
     }
     case types.SET_CURRENT_POST: {
       const { currentPost } = action;
-      return Object.assign(
-        {},
-        state,
-        { currentPost },
-      );
+      return state.merge({ currentPost });
     }
     default:
       return state;
