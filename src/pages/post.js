@@ -2,7 +2,7 @@ import React from 'react';
 import withRedux from 'next-redux-wrapper';
 import initStore from '../store';
 
-import { fetchPosts, fetchSinglePost } from '../store/posts/actions';
+import { fetchSinglePost } from '../store/posts/actions';
 
 import Layout from '../components/Layout';
 import SinglePostContainer from '../containers/SinglePostContainer';
@@ -15,11 +15,14 @@ function PostPage() {
   );
 }
 
-PostPage.getInitialProps = ({ store, query: { slug } }) => {
-  if (slug) {
-    return store.dispatch(fetchSinglePost(slug));
+PostPage.getInitialProps = async ({ store, query: { slug } }) => {
+  await store.dispatch(fetchSinglePost(slug));
+  const postAction = store.getState();
+  if (!(postAction.store && postAction.store.posts[slug])) {
+    const err = new Error();
+    err.code = 'ENOENT';
+    throw err;
   }
-  return store.dispatch(fetchPosts());
 };
 
 export default withRedux(initStore)(PostPage);

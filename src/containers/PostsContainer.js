@@ -4,6 +4,7 @@ import LazyPhotos from 'blazy';
 import { connect } from 'react-redux';
 
 import { fetchPosts } from '../store/posts/actions';
+import { getFullPosts } from '../store/posts/reducer';
 import Posts from '../components/Posts';
 
 const OFFSET = 500;
@@ -55,7 +56,7 @@ class PostsContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    posts: Object.values(state.store.posts),
+    posts: getFullPosts(state),
     page: state.store.page,
     isLastPage: state.store.isLastPage,
     isFetching: state.store.isFetching,

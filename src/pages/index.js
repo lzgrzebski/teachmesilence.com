@@ -15,6 +15,6 @@ function IndexPage() {
   );
 }
 
-IndexPage.getInitialProps = ({ store }) => store.dispatch(fetchPosts());
+IndexPage.getInitialProps = async ({ store }) => store.dispatch(fetchPosts());
 
 export default withRedux(initStore)(IndexPage);

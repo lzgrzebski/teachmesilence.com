@@ -18,8 +18,9 @@ function normalize(items) {
     const { title, description, slug } = fields;
 
     // normalize cover photo fields
-    const coverFields = fields.cover.fields;
-    const cover = {
+    const coverFields = fields.cover && fields.cover.fields;
+    const cover = coverFields && {
+      id: fields.cover.sys.id,
       title: coverFields.title,
       url: coverFields.file.url,
       width: coverFields.file.details.image.width,
@@ -27,7 +28,7 @@ function normalize(items) {
     };
 
     // normalize photo fields
-    const photos = fields.photos.map((photo) => {
+    const photos = fields.photos && fields.photos.map((photo) => {
       const { fields: { file }, sys } = photo;
       const photoId = sys.id;
       const photoTitle = fields.title;
@@ -47,9 +48,9 @@ function normalize(items) {
       slug,
       createdAt,
       title,
-      description,
-      cover,
-      photos,
+      ...description && { description },
+      ...cover && { cover },
+      ...photos && { photos },
     };
   });
 
@@ -81,7 +82,6 @@ export function getPosts(page = 0) {
     });
 }
 
-
 export function getSinglePost(slug) {
   return getClient().getEntries({
     content_type: POST_CONTENT_TYPE,
@@ -89,4 +89,12 @@ export function getSinglePost(slug) {
     'fields.slug': slug,
   })
     .then(({ items }) => ({ posts: normalize(items), currentPost: slug }));
+}
+
+export function getMenu() {
+  return getClient().getEntries({
+    content_type: POST_CONTENT_TYPE,
+    select: 'fields.slug,fields.title',
+  })
+  .then(({ items }) => ({ posts: normalize(items) }));
 }

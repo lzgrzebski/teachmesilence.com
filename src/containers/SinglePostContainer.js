@@ -28,6 +28,10 @@ class SinglePostContainer extends Component {
     });
   }
 
+  componentDidUpdate() {
+    this.lazy.revalidate();
+  }
+
   render() {
     return (
       <div>

@@ -4,7 +4,7 @@
   "description": "Simply photoblog build with react, redux, nextjs and contentful.",
   "repository": "git@github.com:lzgrzebski/teachmesilence.com.git",
   "scripts": {
-    "dev": "next src",
+    "dev": "node src/server.js",
     "build": "next build src",
     "start": "next start src"
   },
@@ -30,11 +30,13 @@
   "dependencies": {
     "blazy": "^1.8.2",
     "contentful": "^3.8.1",
+    "express": "^4.15.2",
     "inuitcss": "^6.0.0-beta.4",
     "lodash.debounce": "^4.0.8",
     "lodash.keyby": "^4.6.0",
     "next": "^2.0.0-beta.40",
     "next-redux-wrapper": "^1.0.0",
+    "next-routes": "^1.0.24",
     "node-sass": "^4.5.0",
     "raw-loader": "^0.5.1",
     "react": "^15.4.2",
