@@ -35,7 +35,7 @@
     "lodash.debounce": "^4.0.8",
     "lodash.keyby": "^4.6.0",
     "next": "^2.2.0",
-    "next-redux-wrapper": "^1.0.0",
+    "next-redux-wrapper": "^1.1.2",
     "next-routes": "^1.0.24",
     "node-sass": "^4.5.0",
     "raw-loader": "^0.5.1",
