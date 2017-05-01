@@ -7,7 +7,7 @@ import { fetchPosts } from '../store/posts/actions';
 import { getFullPosts } from '../store/posts/reducer';
 import Posts from '../components/Posts';
 
-const OFFSET = 500;
+const OFFSET = 1000;
 
 class PostsContainer extends Component {
   static propTypes = {
@@ -21,10 +21,11 @@ class PostsContainer extends Component {
   componentDidMount() {
     this.lazy = new LazyPhotos({
       offset: 1000,
-      selector: '.Photo__element',
-      successClass: 'Photo__element--loaded',
+      selector: '.lazy',
+      successClass: 'lazy--loaded',
     });
     window.addEventListener('scroll', _debounce(this.handleScroll));
+    window.addEventListener('resize', _debounce(this.handleResize, 200, { leading: false, trailing: true }));
   }
   componentDidUpdate() {
     if (!this.props.isFetching) {
@@ -42,6 +43,13 @@ class PostsContainer extends Component {
     const y = yOffset + window.innerHeight + OFFSET;
     if (!this.props.isFetching && y >= contentHeight) {
       this.props.fetchPosts(this.props.page, this.props.isLastPage, this.props.isFetching);
+    }
+  }
+
+  handleResize = () => {
+    const notRenderedImages = document.querySelectorAll('.lazy:not(.lazy--loaded)');
+    if (notRenderedImages.length > 0) {
+      this.lazy.revalidate();
     }
   }
 

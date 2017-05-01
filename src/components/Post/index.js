@@ -1,24 +1,30 @@
 import React, { PropTypes } from 'react';
 
-import Photo from './Photo';
-import CoverPhoto from './CoverPhoto';
+import Wrapper from './Wrapper';
+import Content from './Content';
+import TextWrapper from './TextWrapper';
+import Title from './Title';
+import Text from './Text';
+
+import Photo from '../Photo';
+import CoverPhoto from '../CoverPhoto';
 
 export default function Post({ title, description, photos, cover }) {
   return (
-    <article className="Post">
+    <Wrapper>
       <CoverPhoto key={cover.id} {...cover} />
-      <div className="o-wrapper">
-        <section className="o-wrapper-text">
-          <h1 className="Post__title">{title}</h1>
-          <p className="Post__text" dangerouslySetInnerHTML={{ __html: description }} />
-        </section>
+      <Content>
+        <TextWrapper>
+          <Title>{title}</Title>
+          <Text dangerouslySetInnerHTML={{ __html: description }} />
+        </TextWrapper>
         <section>
           {photos.map(photo =>
             <Photo key={photo.id} {...photo} />,
           )}
         </section>
-      </div>
-    </article>
+      </Content>
+    </Wrapper>
   );
 }
 
