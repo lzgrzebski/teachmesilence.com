@@ -1,5 +1,6 @@
 import _debounce from 'lodash.debounce';
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import LazyPhotos from 'blazy';
 import { connect } from 'react-redux';
 
@@ -23,9 +24,10 @@ class PostsContainer extends Component {
       offset: 1000,
       selector: '.lazy',
       successClass: 'lazy--loaded',
+      success: e => e.parentNode.classList.add('picture--loaded'),
     });
     window.addEventListener('scroll', _debounce(this.handleScroll));
-    window.addEventListener('resize', _debounce(this.handleResize, 200, { leading: false, trailing: true }));
+    window.addEventListener('resize', _debounce(this.handleResize, 400, { leading: false, trailing: true }));
   }
   componentDidUpdate() {
     if (!this.props.isFetching) {

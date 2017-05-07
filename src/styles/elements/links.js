@@ -10,6 +10,10 @@ export default css`
     border-bottom: 1px solid;
 
     color: ${colorLinks};
+
+    &:hover {
+      cursor:pointer;
+    }
   }
   
 `;

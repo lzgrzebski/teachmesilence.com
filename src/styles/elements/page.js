@@ -14,6 +14,10 @@ export default css`
 
     color: ${settings.colorBase};
     background-color: ${settings.backgroundBase};
+
+    &.is-menu-open {
+      overflow:hidden;
+    }
   }
 
 `;

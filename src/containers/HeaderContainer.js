@@ -1,21 +1,27 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Link from 'next/link';
 
 import { fetchMenu } from '../store/posts/actions';
 import { getMenuLinks } from '../store/posts/reducer';
 
+import Header from '../components/Header';
+
 
 class HeaderContainer extends Component {
   static propTypes = {
-    links: PropTypes.arrayOf(PropTypes.object).isRequired,
-    activePost: PropTypes.bool,
-    isMenuOpen: PropTypes.bool.isRequired,
     fetchMenu: PropTypes.func.isRequired,
+    isMenuOpen: PropTypes.bool.isRequired,
   }
 
-  showMenuLinks() {
-    return this.props.links.map(({ slug, title }) => <Link key={`link-${slug}`} prefetch href={`/post?slug=${slug}`} as={`/post/${slug}/`} ><a>{title}</a></Link>);
+  componentDidMount() {
+    document.documentElement.classList.toggle('is-menu-open', this.props.isMenuOpen);
+  }
+  componentWillReceiveProps(nextProps) {
+    document.documentElement.classList.toggle('is-menu-open', nextProps.isMenuOpen);
+  }
+  componentWillUnmount() {
+    document.documentElement.classList.remove('is-menu-open');
   }
 
   handleClick = () => {
@@ -24,10 +30,7 @@ class HeaderContainer extends Component {
 
   render() {
     return (
-      <header>
-        <button onClick={this.handleClick}>Menu</button>
-        {this.props.isMenuOpen && this.showMenuLinks()}
-      </header>
+      <Header {...this.props} handleClick={this.handleClick} />
     );
   }
 }

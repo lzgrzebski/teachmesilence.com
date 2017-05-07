@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import LazyPhotos from 'blazy';
 import { connect } from 'react-redux';
 
@@ -23,8 +24,8 @@ class SinglePostContainer extends Component {
   componentDidMount() {
     this.lazy = new LazyPhotos({
       offset: 1000,
-      selector: '.Photo__element',
-      successClass: 'Photo__element--loaded',
+      selector: '.lazy',
+      successClass: 'lazy--loaded',
     });
   }
 

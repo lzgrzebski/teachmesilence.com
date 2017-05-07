@@ -1,5 +1,17 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import settings from '../../services/settings';
+
+const animatedPlaceholder = keyframes`
+
+  0%, 80%, 100% {
+    opacity:0.5;
+  }
+
+  30%, 50%{
+    opacity:1;
+  }
+
+`;
 
 export default styled.picture`
 
@@ -15,5 +27,10 @@ export default styled.picture`
   padding-top: ${props => `${props.paddingTop}`};
 
   background: ${settings.backgroundPhotoPlaceholder}; 
+  transition:  opacity 500ms ease-in-out;
+
+  &:not(.picture--loaded){
+    animation: ${animatedPlaceholder} 1.5s linear -0.15s infinite;
+  }
 
 `;

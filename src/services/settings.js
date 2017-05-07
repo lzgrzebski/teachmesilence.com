@@ -19,8 +19,14 @@ const settings = {
   coverPhotoSizes: [768, 1050, 1300, 1979, 1980],
   coverPhotoMobileSizes: [360, 375, 767, 768],
 
-  mobileCoverPhotoWidth: 767,
+  mobileCoverPhotoWidth: 768,
   mobilCoverPhotoHeight: 800,
+
+  buttonWidth: 55,
+  buttonHeight: 55,
+  barThickness: 3,
+  buttonPad: 10,
+  buttonBarSpace: 10,
 
 };
 
