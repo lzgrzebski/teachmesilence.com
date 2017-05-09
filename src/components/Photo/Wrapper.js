@@ -30,7 +30,7 @@ export default styled.picture`
   transition:  opacity 500ms ease-in-out;
 
   &:not(.picture--loaded){
-    animation: ${animatedPlaceholder} 1.5s linear -0.15s infinite;
+    animation: ${animatedPlaceholder} 1.7s linear -0.15s infinite;
   }
 
 `;

@@ -30,6 +30,10 @@ export default function (state = INITIAL_STATE, action) {
       const { currentPost } = action;
       return state.merge({ currentPost });
     }
+    case types.SET_ACTIVE_POST: {
+      const { activePost } = action;
+      return state.merge({ activePost });
+    }
     case types.MENU_CLICK: {
       return state.merge({ isMenuOpen: !state.isMenuOpen });
     }

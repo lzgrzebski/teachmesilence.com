@@ -7,14 +7,20 @@ import MenuList from './MenuList';
 import MenuLinkWrapper from './MenuLinkWrapper';
 import MenuLink from './MenuLink';
 
-export default function Menu({ links, isMenuOpen }) {
+export default function Menu({ links, isMenuOpen, activePost, handleClick }) {
   return (
     <Wrapper active={isMenuOpen}>
       <MenuList>
         {links.map(({ slug, title }) => (
           <MenuLinkWrapper key={`link-${slug}`}>
-            <Link prefetch href={`/post?slug=${slug}`} as={`/post/${slug}/`} >
-              <MenuLink href={`/post/${slug}/`}>{title}</MenuLink>
+            <Link prefetch href={`/post?slug=${slug}`} as={`/post/${slug}/`}>
+              <MenuLink
+                onBefore={handleClick}
+                href={`/post/${slug}/`}
+                active={activePost === slug}
+              >
+                {title}
+              </MenuLink>
             </Link>
           </MenuLinkWrapper>
           ),
@@ -27,4 +33,10 @@ export default function Menu({ links, isMenuOpen }) {
 Menu.propTypes = {
   isMenuOpen: PropTypes.bool.isRequired,
   links: PropTypes.arrayOf(PropTypes.object).isRequired,
+  activePost: PropTypes.string,
+  handleClick: PropTypes.func.isRequired,
+};
+
+Menu.defaultProps = {
+  activePost: null,
 };

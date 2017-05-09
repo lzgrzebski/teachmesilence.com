@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import LazyPhotos from 'blazy';
 import { connect } from 'react-redux';
 
-import { fetchPosts } from '../store/posts/actions';
+import { fetchPosts, setActivePost } from '../store/posts/actions';
 import { getFullPosts } from '../store/posts/reducer';
 import Posts from '../components/Posts';
 
@@ -17,6 +17,7 @@ class PostsContainer extends Component {
     isFetching: PropTypes.bool.isRequired,
     page: PropTypes.number.isRequired,
     fetchPosts: PropTypes.func.isRequired,
+    setActivePost: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
@@ -55,10 +56,14 @@ class PostsContainer extends Component {
     }
   }
 
+  handleEnter = (slug) => {
+    this.props.setActivePost(slug);
+  }
+
   render() {
     return (
       <main onScroll={this.handleScroll}>
-        {this.props.posts && <Posts posts={this.props.posts} />}
+        {this.props.posts && <Posts posts={this.props.posts} handleEnter={this.handleEnter} />}
       </main>
     );
   }
@@ -73,4 +78,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchPosts })(PostsContainer);
+export default connect(mapStateToProps, { fetchPosts, setActivePost })(PostsContainer);
