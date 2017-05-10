@@ -39,6 +39,3 @@ export default WrappedComponent => (
   }
 
 );
-
-
-

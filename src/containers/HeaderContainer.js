@@ -7,7 +7,6 @@ import { getMenuLinks } from '../store/posts/reducer';
 
 import Header from '../components/Header';
 
-
 class HeaderContainer extends Component {
   static propTypes = {
     fetchMenu: PropTypes.func.isRequired,

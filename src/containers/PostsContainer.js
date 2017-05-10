@@ -9,6 +9,7 @@ import settings from '../services/settings';
 import { fetchPosts, setActivePost } from '../store/posts/actions';
 import { getFullPosts } from '../store/posts/reducer';
 import Posts from '../components/Posts';
+import Loader from '../components/Loader';
 
 @LazyPhotos
 class PostsContainer extends Component {
@@ -50,7 +51,7 @@ class PostsContainer extends Component {
     return (
       <main onScroll={this.handleScroll}>
         {this.props.posts && <Posts posts={this.props.posts} handleEnter={this.handleEnter} />}
-        {this.props.isFetching && <span>loading</span>}
+        {this.props.isFetching && <Loader />}
       </main>
     );
   }
