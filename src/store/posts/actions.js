@@ -43,7 +43,3 @@ export const fetchMenu = () => async (dispatch, getState) => {
 export const setActivePost = activePost => dispatch => (
   dispatch({ type: types.SET_ACTIVE_POST, activePost })
 );
-
-
-
-

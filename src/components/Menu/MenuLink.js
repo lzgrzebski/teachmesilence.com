@@ -16,14 +16,15 @@ function Link(props) {
       props.onClick(event);
     }
   };
-  // TODO fix eslint error
-  return <a {...prop} onClick={handleClick} />;
+
+  return <a {...prop} href={prop.href} onClick={handleClick}>{ props.children }</a>;
 }
 
 Link.propTypes = {
   active: PropTypes.bool.isRequired,
   onBefore: PropTypes.func,
   onClick: PropTypes.func.isRequired,
+  children: PropTypes.string.isRequired,
 };
 
 Link.defaultProps = {
