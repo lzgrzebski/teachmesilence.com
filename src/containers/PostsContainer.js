@@ -1,15 +1,16 @@
 import _debounce from 'lodash.debounce';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import LazyPhotos from 'blazy';
 import { connect } from 'react-redux';
+import LazyPhotos from './decorators/LazyPhotos';
+
+import settings from '../services/settings';
 
 import { fetchPosts, setActivePost } from '../store/posts/actions';
 import { getFullPosts } from '../store/posts/reducer';
 import Posts from '../components/Posts';
 
-const OFFSET = 1000;
-
+@LazyPhotos
 class PostsContainer extends Component {
   static propTypes = {
     posts: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -21,40 +22,25 @@ class PostsContainer extends Component {
   }
 
   componentDidMount() {
-    this.lazy = new LazyPhotos({
-      offset: 1000,
-      selector: '.lazy',
-      successClass: 'lazy--loaded',
-      success: e => e.parentNode.classList.add('picture--loaded'),
-    });
-    window.addEventListener('scroll', _debounce(this.handleScroll));
-    window.addEventListener('resize', _debounce(this.handleResize, 400, { leading: false, trailing: true }));
-  }
-  componentDidUpdate() {
-    if (!this.props.isFetching) {
-      this.lazy.revalidate();
-    }
+    window.addEventListener('scroll', this.handleScroll);
   }
   componentWillUnmount() {
-    window.removeEventListener('scroll', _debounce(this.handleScroll));
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
-  handleScroll = () => {
+  shouldLoadPosts = () => {
     const wrap = document.getElementsByTagName('body')[0];
     const contentHeight = wrap.offsetHeight;
     const yOffset = window.pageYOffset;
-    const y = yOffset + window.innerHeight + OFFSET;
-    if (!this.props.isFetching && y >= contentHeight) {
-      this.props.fetchPosts(this.props.page, this.props.isLastPage, this.props.isFetching);
-    }
+    const y = yOffset + window.innerHeight + settings.infiniteScrollOffset;
+    return y >= contentHeight;
   }
 
-  handleResize = () => {
-    const notRenderedImages = document.querySelectorAll('.lazy:not(.lazy--loaded)');
-    if (notRenderedImages.length > 0) {
-      this.lazy.revalidate();
+  handleScroll = _debounce(() => {
+    if (!this.props.isFetching && this.shouldLoadPosts()) {
+      this.props.fetchPosts(this.props.page, this.props.isLastPage, this.props.isFetching);
     }
-  }
+  })
 
   handleEnter = (slug) => {
     this.props.setActivePost(slug);
@@ -64,6 +50,7 @@ class PostsContainer extends Component {
     return (
       <main onScroll={this.handleScroll}>
         {this.props.posts && <Posts posts={this.props.posts} handleEnter={this.handleEnter} />}
+        {this.props.isFetching && <span>loading</span>}
       </main>
     );
   }

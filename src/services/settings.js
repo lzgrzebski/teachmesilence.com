@@ -28,6 +28,13 @@ const settings = {
   buttonPad: 10,
   buttonBarSpace: 10,
 
+  lazySelector: '.lazy',
+  lazySuccessClass: 'lazy--loaded',
+  lazyOffset: 1000,
+  lazyPictureElemClass: 'picture--loaded',
+
+  infiniteScrollOffset: 1000,
+
 };
 
 settings.breakpoints = {

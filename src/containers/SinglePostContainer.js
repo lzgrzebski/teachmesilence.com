@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import LazyPhotos from 'blazy';
 import { connect } from 'react-redux';
+import LazyPhotos from './decorators/LazyPhotos';
 
 import { getCurrentPost } from '../store/posts/reducer';
 import Post from '../components/Post';
 
+@LazyPhotos
 class SinglePostContainer extends Component {
   static propTypes = {
     post: PropTypes.shape({
@@ -22,15 +23,7 @@ class SinglePostContainer extends Component {
   }
 
   componentDidMount() {
-    this.lazy = new LazyPhotos({
-      offset: 1000,
-      selector: '.lazy',
-      successClass: 'lazy--loaded',
-    });
-  }
 
-  componentDidUpdate() {
-    this.lazy.revalidate();
   }
 
   render() {
