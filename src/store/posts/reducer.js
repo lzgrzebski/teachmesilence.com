@@ -27,8 +27,8 @@ export default function (state = INITIAL_STATE, action) {
       return state.merge({ posts, isFetching: false }, { deep: true });
     }
     case types.SET_CURRENT_POST: {
-      const { currentPost } = action;
-      return state.merge({ currentPost });
+      const { currentPost, activePost } = action;
+      return state.merge({ currentPost, activePost });
     }
     case types.SET_ACTIVE_POST: {
       const { activePost } = action;

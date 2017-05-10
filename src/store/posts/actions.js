@@ -25,7 +25,7 @@ export const fetchSinglePost = slug => async (dispatch, getState) => {
     const singlePost = await getSinglePost(slug);
     dispatch({ type: types.RECEIVE_SINGLE_POST, ...singlePost });
   }
-  return dispatch({ type: types.SET_CURRENT_POST, currentPost: slug });
+  return dispatch({ type: types.SET_CURRENT_POST, currentPost: slug, activePost: slug });
 };
 
 // async action to fetch menu links data
