@@ -6,6 +6,5 @@ export const RECEIVE_SINGLE_POST = 'post:RECEIVE_SINGLE_POST';
 export const SET_CURRENT_POST = 'post:SET_CURRENT_POST';
 export const SET_ACTIVE_POST = 'post:SET_ACTIVE_POST';
 
-export const MENU_CLICK = 'menu:MENU_CLICK';
-export const MENU_REQUEST = 'menu:MENU_REQUEST_LINKS';
-export const MENU_RECEIVE = 'menu:MENU_RECEIVE_LINKS';
+export const REQUEST_POSTS_LINKS = 'posts:REQUEST_POSTS_LINKS';
+export const RECEIVE_POSTS_LINKS = 'posts:RECEIVE_POSTS_LINKS';

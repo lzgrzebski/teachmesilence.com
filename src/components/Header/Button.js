@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import ButtonWrapper from './ButtonWrapper';
 import ButtonIcon from './ButtonIcon';
 
-export default function Button({ isMenuOpen, handleClick }) {
+export default function Button({ isMenuOpen, handleClick, pinned }) {
   return (
     <ButtonWrapper onClick={handleClick}>
-      <ButtonIcon isMenuOpen={isMenuOpen} />
+      <ButtonIcon isMenuOpen={isMenuOpen} pinned={pinned} />
     </ButtonWrapper>
   );
 }
@@ -16,4 +16,5 @@ export default function Button({ isMenuOpen, handleClick }) {
 Button.propTypes = {
   handleClick: PropTypes.func.isRequired,
   isMenuOpen: PropTypes.bool.isRequired,
+  pinned: PropTypes.bool.isRequired,
 };

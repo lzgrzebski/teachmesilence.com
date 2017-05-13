@@ -1,4 +1,5 @@
 import * as types from './actionTypes';
+import * as headerActions from '../header/actions';
 import { getPosts, getSinglePost, getMenu } from '../../services/api';
 
 // check if we can fetch posts
@@ -32,11 +33,11 @@ export const fetchSinglePost = slug => async (dispatch, getState) => {
 export const fetchMenu = () => async (dispatch, getState) => {
   const { store: { isMenuLoaded, isMenuOpen } } = getState();
   const menuState = !isMenuOpen;
-  dispatch({ type: types.MENU_CLICK, isMenuOpen: menuState });
+  dispatch(headerActions.menuClick(menuState));
 
   if (menuState && !isMenuLoaded) {
     const posts = await getMenu();
-    dispatch({ type: types.MENU_RECEIVE, ...posts });
+    dispatch({ type: types.RECEIVE_POSTS_LINKS, ...posts });
   }
 };
 

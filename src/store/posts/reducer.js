@@ -8,7 +8,6 @@ const INITIAL_STATE = Immutable({
   isFetching: false,
   currentPost: null,
   activePost: null,
-  isMenuOpen: false,
   isMenuLoaded: false,
 });
 
@@ -34,10 +33,7 @@ export default function (state = INITIAL_STATE, action) {
       const { activePost } = action;
       return state.merge({ activePost });
     }
-    case types.MENU_CLICK: {
-      return state.merge({ isMenuOpen: !state.isMenuOpen });
-    }
-    case types.MENU_RECEIVE: {
+    case types.RECEIVE_POSTS_LINKS: {
       const { posts } = action;
       return state.merge({ posts, isMenuLoaded: true }, { deep: true });
     }

@@ -13,8 +13,6 @@ export default styled.img`
     left: 0;
     right: 0;
 
-    -webkit-transition:  opacity 500ms ease-in-out;
-       -moz-transition:  opacity 500ms ease-in-out;
-         -o-transition:  opacity 500ms ease-in-out;
-            transition:  opacity 500ms ease-in-out;
+    transition:  opacity 500ms ease-in-out;
+    will-change: opacity;
 `;

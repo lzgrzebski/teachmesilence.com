@@ -28,6 +28,7 @@ export default styled.picture`
 
   background: ${settings.backgroundPhotoPlaceholder}; 
   transition:  opacity 500ms ease-in-out;
+  will-change: opacity;
 
   &:not(.picture--loaded){
     animation: ${animatedPlaceholder} 1.7s linear -0.15s infinite;

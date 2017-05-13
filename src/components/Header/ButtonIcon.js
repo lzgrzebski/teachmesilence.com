@@ -20,8 +20,9 @@ export default styled.span`
     content: "";
     transition: transform .3s cubic-bezier(.4,0,0,1);
     transform-origin: center left;
+    will-change:transform;
 
-    ${({ isMenuOpen }) => (isMenuOpen && css`
+    ${({ isMenuOpen, pinned }) => ((isMenuOpen || pinned) && css`
       background:#555;
     `)}
   }
