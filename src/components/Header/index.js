@@ -8,13 +8,13 @@ import Menu from '../Menu';
 
 export default function Header({ handleClick, isMenuOpen, isFixed, isPinned, links, activePost }) {
   return (
-    <Wrapper
-      active={isMenuOpen}
-      unfixed={!isFixed && !isPinned}
-      unpinned={isFixed && !isPinned}
-      pinned={isPinned && isFixed}
-    >
-      <HeaderWrapper pinned={isPinned && isFixed}>
+    <Wrapper active={isMenuOpen}>
+      <HeaderWrapper
+        active={isMenuOpen}
+        unfixed={!isFixed && !isPinned}
+        unpinned={isFixed && !isPinned}
+        pinned={isPinned && isFixed}
+      >
         <Button handleClick={handleClick} isMenuOpen={isMenuOpen} pinned={isPinned && isFixed} />
         <Menu
           isMenuOpen={isMenuOpen}

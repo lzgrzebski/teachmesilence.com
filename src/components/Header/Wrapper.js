@@ -1,32 +1,12 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export default styled.header`
 
+  position:absolute;
   top: 0;
   left:0;
   right:0;
-
-  ${({ unfixed }) => (unfixed && css`
-      position: absolute;
-      transform: translateY(0);
-  `)};
-
-  ${({ unpinned }) => (unpinned && css`
-      position: fixed;
-      transform: translateY(-100%);
-  `)};
-
-  ${({ pinned }) => (pinned && css`
-      position: fixed;
-      transform: translateY(0);
-      transition: all 0.2s ease-in-out;
-  `)};
-
-  ${({ active }) => (active && css`
-      min-height:100%;
-  `)};
   
-  will-change:transform;
   z-index:1;
 
     &:after {
