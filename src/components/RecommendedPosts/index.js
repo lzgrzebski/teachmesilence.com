@@ -18,13 +18,13 @@ class RecommendedPosts extends Component {
   render() {
     const { posts } = this.props;
     return (
-      <Wrapper>
+      <div>
         {posts.map(({ cover }) => (
-          <div>
+          <Wrapper>
             <CoverPhoto key={cover.id} {...cover} />
-          </div>
+          </Wrapper>
         ))}
-      </Wrapper>
+      </div>
     );
   }
 }
