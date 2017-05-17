@@ -1,6 +1,7 @@
 import * as types from './actionTypes';
 import * as headerActions from '../header/actions';
-import { getPosts, getSinglePost, getMenu } from '../../services/api';
+import * as userActions from '../user/actions';
+import { getPosts, getSinglePost, getMenu, getRecommendedPosts } from '../../services/api';
 
 // check if we can fetch posts
 function shouldFetchPosts(isLastPage, isFetching) {
@@ -24,9 +25,15 @@ export const fetchSinglePost = slug => async (dispatch, getState) => {
   if (!(posts[slug] && posts[slug].description)) {
     dispatch({ type: types.REQUEST_SINGLE_POST });
     const singlePost = await getSinglePost(slug);
-    dispatch({ type: types.RECEIVE_SINGLE_POST, ...singlePost });
+    dispatch({
+      type: types.RECEIVE_SINGLE_POST,
+      ...singlePost,
+      currentPost: slug,
+      activePost: slug,
+    });
+  } else {
+    dispatch({ type: types.SET_CURRENT_POST, currentPost: slug, activePost: slug });
   }
-  return dispatch({ type: types.SET_CURRENT_POST, currentPost: slug, activePost: slug });
 };
 
 // async action to fetch menu links data
@@ -39,6 +46,15 @@ export const fetchMenu = () => async (dispatch, getState) => {
     const posts = await getMenu();
     dispatch({ type: types.RECEIVE_POSTS_LINKS, ...posts });
   }
+};
+
+// async action to recommended posts
+export const fetchRecommendedPosts = visitedPosts => async (dispatch) => {
+  dispatch(userActions.requestRecommendedPosts());
+
+  const posts = await getRecommendedPosts(visitedPosts.join(','));
+  dispatch(userActions.receiveRecommendedPosts());
+  dispatch({ type: types.SET_RECOMMENDED_POSTS, ...posts });
 };
 
 export const setActivePost = activePost => dispatch => (

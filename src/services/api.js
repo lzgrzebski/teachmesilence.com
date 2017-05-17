@@ -91,6 +91,15 @@ export function getSinglePost(slug) {
     .then(({ items }) => ({ posts: normalize(items), currentPost: slug }));
 }
 
+export function getRecommendedPosts(excludedPosts) {
+  return getClient().getEntries({
+    content_type: POST_CONTENT_TYPE,
+    limit: 3,
+    'fields.slug[nin]': excludedPosts,
+  })
+    .then(({ items }) => ({ posts: normalize(items) }));
+}
+
 export function getMenu() {
   return getClient().getEntries({
     content_type: POST_CONTENT_TYPE,

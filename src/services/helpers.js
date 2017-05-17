@@ -1,3 +1,4 @@
+// TODO add JSDOC to all the helper method and move them to the separated files aferwards
 import { css } from 'styled-components';
 import settings from './settings';
 
@@ -80,4 +81,18 @@ export function sourceSrcSet(url, width, height, thumb = false) {
 
 export function unique(id, i) {
   return `${id}-${i}`;
+}
+
+
+/**
+ * Checking if scroll reach bottom of the page
+ *
+ * @return {bool} true if scroll in the bottom
+ */
+export function shouldLoadPosts(offset = settings.infiniteScrollOffset) {
+  const wrap = document.getElementsByTagName('body')[0];
+  const contentHeight = wrap.offsetHeight;
+  const yOffset = window.pageYOffset;
+  const y = yOffset + window.innerHeight + offset;
+  return y >= contentHeight;
 }

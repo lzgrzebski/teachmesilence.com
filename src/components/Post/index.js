@@ -7,6 +7,8 @@ import TextWrapper from './TextWrapper';
 import Title from './Title';
 import Text from './Text';
 
+import Social from '../Social';
+
 import Photo from '../Photo';
 import CoverPhoto from '../CoverPhoto';
 
@@ -24,6 +26,7 @@ export default function Post({ title, description, photos, cover }) {
             <Photo key={photo.id} {...photo} />,
           )}
         </section>
+        <Social />
       </Content>
     </Wrapper>
   );

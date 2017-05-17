@@ -1,11 +1,10 @@
-import _debounce from 'lodash.debounce';
+import _throttle from 'lodash.throttle';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import LazyPhotos from './decorators/LazyPhotos';
 
-import settings from '../services/settings';
-
+import LazyPhotos from '../decorators/LazyPhotos';
+import { shouldLoadPosts } from '../services/helpers';
 import { fetchPosts, setActivePost } from '../store/posts/actions';
 import { getFullPosts } from '../store/posts/reducer';
 import Posts from '../components/Posts';
@@ -29,22 +28,15 @@ class PostsContainer extends Component {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
-  shouldLoadPosts = () => {
-    const wrap = document.getElementsByTagName('body')[0];
-    const contentHeight = wrap.offsetHeight;
-    const yOffset = window.pageYOffset;
-    const y = yOffset + window.innerHeight + settings.infiniteScrollOffset;
-    return y >= contentHeight;
-  }
-
-  handleScroll = _debounce(() => {
-    if (!this.props.isFetching && this.shouldLoadPosts()) {
+  handleScroll = _throttle(() => {
+    if (!this.props.isFetching && shouldLoadPosts()) {
       this.props.fetchPosts(this.props.page, this.props.isLastPage, this.props.isFetching);
     }
-  })
+  }, 300)
 
   handleEnter = (slug) => {
     this.props.setActivePost(slug);
+    //this.props.getNumberOfShares(url)
   }
 
   render() {

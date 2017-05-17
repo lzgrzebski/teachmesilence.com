@@ -1,7 +1,7 @@
 import _debounce from 'lodash.debounce';
 import React, { Component } from 'react';
 import Blazy from 'blazy';
-import settings from '../../services/settings';
+import settings from '../services/settings';
 
 export default WrappedComponent => (
 

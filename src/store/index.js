@@ -3,10 +3,15 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import Immutable from 'seamless-immutable';
 
+import localStorage from './_middleware/localStorage';
 import reducers from './reducers';
 
-export default initialState => (
-  createStore(reducers, Immutable(initialState), composeWithDevTools(
-    applyMiddleware(thunk),
-  ))
-);
+export default (initialState) => {
+  const store = createStore(reducers, Immutable(initialState), composeWithDevTools(
+    applyMiddleware(thunk, localStorage),
+  ));
+  store.subscribe(() => {
+    // TODO save visited todos in localStorage
+  });
+  return store;
+};

@@ -22,8 +22,8 @@ export default function (state = INITIAL_STATE, action) {
       return state.merge({ posts, isLastPage, page, isFetching: false }, { deep: true });
     }
     case types.RECEIVE_SINGLE_POST: {
-      const { posts } = action;
-      return state.merge({ posts, isFetching: false }, { deep: true });
+      const { posts, currentPost, activePost } = action;
+      return state.merge({ posts, isFetching: false, currentPost, activePost }, { deep: true });
     }
     case types.SET_CURRENT_POST: {
       const { currentPost, activePost } = action;
@@ -32,6 +32,10 @@ export default function (state = INITIAL_STATE, action) {
     case types.SET_ACTIVE_POST: {
       const { activePost } = action;
       return state.merge({ activePost });
+    }
+    case types.SET_RECOMMENDED_POSTS: {
+      const { posts } = action;
+      return state.merge({ posts }, { deep: true });
     }
     case types.RECEIVE_POSTS_LINKS: {
       const { posts } = action;
@@ -63,4 +67,16 @@ export function getMenuLinks(state) {
   return posts.map(
     ({ slug, title }) => ({ slug, title }),
   );
+}
+
+export function getRecommendedPosts(state) {
+  const { store: { currentPost }, user: { isDownloadedRecommendedPosts } } = state;
+  const posts = getFullPosts(state);
+  const filteredPosts = posts
+    .filter(post => !state.user.visitedPosts.includes(post.slug) && post.slug !== currentPost)
+    .slice(0, 3);
+  if (filteredPosts.length) return filteredPosts;
+
+  return isDownloadedRecommendedPosts ?
+          posts.filter(post => post.slug !== currentPost).slice(0, 3) : [];
 }

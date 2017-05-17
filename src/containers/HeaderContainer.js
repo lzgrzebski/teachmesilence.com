@@ -1,4 +1,4 @@
-import _debounce from 'lodash.debounce';
+import _throttle from 'lodash.throttle';
 import _raf from 'raf';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -74,11 +74,11 @@ class HeaderContainer extends Component {
     }
   }
 
-  handleScroll = _debounce(() => {
+  handleScroll = _throttle(() => {
     this.currentScrollPosition = document && document.body.scrollTop;
     this.headerState();
     this.lastKnownScrollPosition = this.currentScrollPosition;
-  })
+  }, 200)
 
   render() {
     return (

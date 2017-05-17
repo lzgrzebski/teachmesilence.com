@@ -8,3 +8,5 @@ export const SET_ACTIVE_POST = 'post:SET_ACTIVE_POST';
 
 export const REQUEST_POSTS_LINKS = 'posts:REQUEST_POSTS_LINKS';
 export const RECEIVE_POSTS_LINKS = 'posts:RECEIVE_POSTS_LINKS';
+
+export const SET_RECOMMENDED_POSTS = 'posts:SET_RECOMMENDED_POSTS';
