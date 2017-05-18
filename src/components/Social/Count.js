@@ -3,8 +3,8 @@ import { fontSize } from '../../services/helpers';
 
 export default styled.span`
 
-  ${fontSize('15px')};
-  line-height: 2.212;
+  ${fontSize('17px')};
+  line-height: 1.9;
 
   color:#999;
 

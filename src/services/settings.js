@@ -1,6 +1,14 @@
 const UNIT = 33.18;
 
 const settings = {
+  siteUrl: 'http://teachmesilence.com',
+  siteDescription: '',
+
+  person: 'person',
+  people: 'people',
+  sharedText: 'shared with love',
+  fbShareUrl: 'https://www.facebook.com/sharer/sharer.php?u=',
+
   fontSize: '18px',
   lineHeight: `${UNIT}px`,
 
@@ -42,6 +50,7 @@ settings.breakpoints = {
   mobileBigger: settings.imageSizes[1],
   tablet: settings.imageSizes[2],
   desktop: 980,
+  desktopFull: 1050,
   wide: 1300,
   end: 1980,
 };

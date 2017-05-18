@@ -41,6 +41,17 @@ export default function (state = INITIAL_STATE, action) {
       const { posts } = action;
       return state.merge({ posts, isMenuLoaded: true }, { deep: true });
     }
+    case types.SHARE_CLICK: {
+      const { slug, shares, liked } = action;
+      return state.merge({
+        posts: {
+          [slug]: {
+            shares,
+            liked,
+          },
+        },
+      }, { deep: true });
+    }
     default:
       return state;
   }

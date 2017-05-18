@@ -51,6 +51,8 @@ function normalize(items) {
       ...description && { description },
       ...cover && { cover },
       ...photos && { photos },
+      shares: 0,
+      liked: false,
     };
   });
 

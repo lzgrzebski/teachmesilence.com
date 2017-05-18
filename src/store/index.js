@@ -10,8 +10,5 @@ export default (initialState) => {
   const store = createStore(reducers, Immutable(initialState), composeWithDevTools(
     applyMiddleware(thunk, localStorage),
   ));
-  store.subscribe(() => {
-    // TODO save visited todos in localStorage
-  });
   return store;
 };

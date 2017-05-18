@@ -96,3 +96,12 @@ export function shouldLoadPosts(offset = settings.infiniteScrollOffset) {
   const y = yOffset + window.innerHeight + offset;
   return y >= contentHeight;
 }
+
+export function getAbsoluteUrl(slug) {
+  if (!slug) return settings.siteUrl;
+  return `${settings.fbShareUrl}${settings.siteUrl}/post/${slug}`;
+}
+
+export function getFbShareUrl(slug) {
+  return settings.fbShareUrl + getAbsoluteUrl(slug);
+}

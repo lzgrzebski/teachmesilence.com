@@ -9,14 +9,14 @@ const Wrapper = styled.div`
 
 `;
 
-export default function Posts({ posts, handleEnter }) {
+export default function Posts({ posts, handleEnter, handleClick }) {
   return (
     <Wrapper>
       {
         posts.map(post => (
           <Waypoint key={post.slug} onEnter={waypointData => handleEnter(post.slug, waypointData)}>
             <div>
-              <Post {...post} />
+              <Post {...post} handleClick={handleClick} />
             </div>
           </Waypoint>
         ),
@@ -28,4 +28,5 @@ export default function Posts({ posts, handleEnter }) {
 Posts.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleEnter: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };

@@ -60,3 +60,10 @@ export const fetchRecommendedPosts = visitedPosts => async (dispatch) => {
 export const setActivePost = activePost => dispatch => (
   dispatch({ type: types.SET_ACTIVE_POST, activePost })
 );
+
+export const shareClick = (slug, shares, liked) => ({
+  type: types.SHARE_CLICK,
+  slug,
+  shares: liked ? shares - 1 : shares + 1,
+  liked: !liked,
+});
