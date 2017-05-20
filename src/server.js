@@ -7,8 +7,9 @@ const app = next({ dev, dir });
 const routes = require('./routes');
 
 const handler = routes.getRequestHandler(app);
+const port =  process.env.PORT || 3000;
 
 app.prepare()
 .then(() => {
-  express().use(handler).listen(3000);
+  express().use(handler).listen(port);
 });
