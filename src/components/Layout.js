@@ -24,9 +24,7 @@ export default function Layout({ children, title, desc, img, url }) {
         <meta property="og:title" content={title} />
         <meta property="og:description" content={desc} />
         <meta property="og:image" content={img} />
-
-        <link rel="manifest" href="/manifest.json" />
-        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async />
+        <script src="//cdn.sendpulse.com/28edd3380a1c17cf65b137fe96516659/js/push/b9808c06361a636d9e29d5729bf9870b_1.js" defer />
       </Head>
       <HeaderContainer />
       { children }
