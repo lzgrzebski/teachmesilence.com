@@ -1,24 +1,16 @@
 import _keyBy from 'lodash.keyby';
 
 import { createClient } from 'contentful';
-import { SPACE_ID, ACCESS_TOKEN } from './config';
+import config from './config.json';
 
-let spaceId;
-let accessToken;
+const space = config.SPACE_ID;
+const accessToken = config.ACCESS_TOKEN;
 
 const POST_CONTENT_TYPE = 'post';
 const LIMIT = 1;
 const ORDERBY = 'sys.createdAt';
 
 let store;
-
-if (process && process.env && process.env.NODE_ENV === 'production') {
-  spaceId = process.env.SPACE_ID;
-  accessToken = process.env.ACCESS_TOKEN;
-} else {
-  spaceId = SPACE_ID;
-  accessToken = ACCESS_TOKEN;
-}
 
 function normalize(items) {
   if (!items) return {}; // if no items skip normalization
@@ -76,7 +68,7 @@ function getClient() {
   if (!store) {
     store = createClient({
       accessToken,
-      space: spaceId,
+      space,
     });
   }
   return store;
