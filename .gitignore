@@ -1,6 +1,5 @@
 src/.next
 src/static
-src/services/config.js
 node_modules
 .vscode
 
