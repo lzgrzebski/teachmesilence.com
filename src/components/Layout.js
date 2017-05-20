@@ -24,8 +24,8 @@ export default function Layout({ children, title, desc, img, url }) {
         <meta property="og:title" content={title} />
         <meta property="og:description" content={desc} />
         <meta property="og:image" content={img} />
-        {/*<link rel="manifest" href="/manifest.json" />
-        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" defer />*/}
+        <link rel="manifest" href="/manifest.json" />
+        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" defer />
       </Head>
       <HeaderContainer />
       { children }

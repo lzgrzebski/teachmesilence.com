@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import settings from '../services/settings';
+import oneSignal from '../services/onesignal';
 
 import { fetchMenu } from '../store/posts/actions';
 import { headerUpdateState } from '../store/header/actions';
@@ -24,16 +25,7 @@ class HeaderContainer extends Component {
   componentDidMount() {
     document.documentElement.classList.toggle(settings.isMenuOpenClassName, this.props.isMenuOpen);
     window.addEventListener('scroll', this.handleScroll);
-    const OneSignal = window.OneSignal || [];
-    if (OneSignal.length === 0) {
-      OneSignal.push(['init', {
-        appId: '5730a570-9af7-410f-9d95-5a8760a731c2',
-        autoRegister: false,
-        notifyButton: {
-          enable: true, /* Set to false to hide */
-        },
-      }]);
-    }
+    if(window) oneSignal();
   }
   componentWillReceiveProps(nextProps) {
     document.documentElement.classList.toggle(settings.isMenuOpenClassName, nextProps.isMenuOpen);
