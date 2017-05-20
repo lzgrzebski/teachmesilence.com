@@ -14,20 +14,20 @@ app.prepare()
 .then(() => {
   const server = express();
 
-  server.get('/manifest.json', (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.send(fs.readFileSync('./manifest.json', 'utf8'));
-  });
+  // server.get('/manifest.json', (req, res) => {
+  //   res.setHeader('Content-Type', 'application/json');
+  //   res.send(fs.readFileSync('./manifest.json', 'utf8'));
+  // });
 
-  server.get('/OneSignalSDKUpdaterWorker.js', (req, res) => {
-    res.setHeader('Content-Type', 'text/javascript');
-    res.send(fs.readFileSync('./OneSignalSDKUpdaterWorker.js', 'utf8'));
-  });
+  // server.get('/OneSignalSDKUpdaterWorker.js', (req, res) => {
+  //   res.setHeader('Content-Type', 'text/javascript');
+  //   res.send(fs.readFileSync('./OneSignalSDKUpdaterWorker.js', 'utf8'));
+  // });
 
-  server.get('/OneSignalSDKWorker.js', (req, res) => {
-    res.setHeader('Content-Type', 'text/javascript');
-    res.send(fs.readFileSync('./OneSignalSDKWorker.js', 'utf8'));
-  });
+  // server.get('/OneSignalSDKWorker.js', (req, res) => {
+  //   res.setHeader('Content-Type', 'text/javascript');
+  //   res.send(fs.readFileSync('./OneSignalSDKWorker.js', 'utf8'));
+  // });
 
   server
     .use(handler)
