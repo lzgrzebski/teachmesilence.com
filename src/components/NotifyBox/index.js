@@ -13,7 +13,7 @@ export default function NotifyBox() {
       <ContentWrapper>
         <Title>If you like this blog, let's keep in  touch!</Title>
         <ButtonWrapper>
-          <Button className="sp_notify_prompt">Enable notifications</Button>
+          <Button>Enable notifications</Button>
           <Button primary>Follow me on instagram</Button>
         </ButtonWrapper>
       </ContentWrapper>

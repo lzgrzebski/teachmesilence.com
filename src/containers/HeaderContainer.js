@@ -24,6 +24,16 @@ class HeaderContainer extends Component {
   componentDidMount() {
     document.documentElement.classList.toggle(settings.isMenuOpenClassName, this.props.isMenuOpen);
     window.addEventListener('scroll', this.handleScroll);
+    const OneSignal = window.OneSignal || [];
+    if (OneSignal.length === 0) {
+      OneSignal.push(['init', {
+        appId: '5730a570-9af7-410f-9d95-5a8760a731c2',
+        autoRegister: false,
+        notifyButton: {
+          enable: true, /* Set to false to hide */
+        },
+      }]);
+    }
   }
   componentWillReceiveProps(nextProps) {
     document.documentElement.classList.toggle(settings.isMenuOpenClassName, nextProps.isMenuOpen);
