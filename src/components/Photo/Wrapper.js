@@ -23,7 +23,7 @@ export default styled.picture`
   position: relative;
   overflow: hidden;
 
-  margin-bottom: ${settings.spacingUnit};
+  margin-bottom: ${({ margin }) => margin};
   padding-top: ${props => `${props.paddingTop}`};
 
   background: ${settings.backgroundPhotoPlaceholder}; 

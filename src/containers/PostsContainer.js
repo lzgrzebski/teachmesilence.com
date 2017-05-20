@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import LazyPhotos from '../decorators/LazyPhotos';
-import { shouldLoadPosts, getFbShareUrl } from '../services/helpers';
-import { fetchPosts, setActivePost, shareClick } from '../store/posts/actions';
+import { shouldLoadPosts, getFbShareUrl, windowOpen } from '../services/helpers';
+import { fetchPosts, setActivePost, shareClick, fetchSharesNumber } from '../store/posts/actions';
 import { getFullPosts } from '../store/posts/reducer';
 import Posts from '../components/Posts';
 import Loader from '../components/Loader';
+import NotifyBox from '../components/NotifyBox';
+import Footer from '../components/Footer';
 
 @LazyPhotos
 class PostsContainer extends Component {
@@ -20,6 +22,7 @@ class PostsContainer extends Component {
     fetchPosts: PropTypes.func.isRequired,
     setActivePost: PropTypes.func.isRequired,
     shareClick: PropTypes.func.isRequired,
+    fetchSharesNumber: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
@@ -35,14 +38,16 @@ class PostsContainer extends Component {
     }
   }, 200)
 
-  handleEnter = (slug) => {
+  handleEnter = (slug, sharesLoaded) => {
     this.props.setActivePost(slug);
-    //this.props.shareClick(slug)
+    if (!sharesLoaded) {
+      this.props.fetchSharesNumber(slug);
+    }
   }
 
   handleClick = (slug, shares, liked, e) => {
     e.preventDefault();
-    if (!liked) window.open(getFbShareUrl(slug), 'tms-share', 'status = 1, height = 500, width = 555, resizable = 0');
+    if (!liked) windowOpen(getFbShareUrl(slug));
     this.props.shareClick(slug, shares, liked);
   }
 
@@ -58,6 +63,8 @@ class PostsContainer extends Component {
             />)
         }
         {this.props.isFetching && <Loader />}
+        {this.props.isLastPage && <NotifyBox />}
+        {this.props.isLastPage && <Footer />}
       </main>
     );
   }
@@ -72,4 +79,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchPosts, setActivePost, shareClick })(PostsContainer);
+export default connect(
+  mapStateToProps, { fetchPosts, setActivePost, shareClick, fetchSharesNumber },
+)(PostsContainer);

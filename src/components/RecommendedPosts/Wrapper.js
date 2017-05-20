@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
-export default styled.article`
+export default styled.a`
 
-    margin-bottom:30px;
+    position: relative;
+    display: block;
+
+    border:0;
     
 `;

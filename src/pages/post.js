@@ -1,16 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import withRedux from 'next-redux-wrapper';
 import initStore from '../store';
 
+import { getAbsoluteUrl } from '../services/helpers';
 import { fetchSinglePost } from '../store/posts/actions';
 
 import Layout from '../components/Layout';
 import SinglePostContainer from '../containers/SinglePostContainer';
 
-function PostPage({ title }) {
+function PostPage(props) {
   return (
-    <Layout title={title}>
+    <Layout {...props}>
       <SinglePostContainer />
     </Layout>
   );
@@ -19,16 +19,21 @@ function PostPage({ title }) {
 PostPage.getInitialProps = async ({ store, query: { slug } }) => {
   await store.dispatch(fetchSinglePost(slug));
   const { store: { posts } } = store.getState();
-  if (!(posts && posts[slug])) {
+  const post = posts[slug];
+
+  if (!(posts && post)) {
     const err = new Error();
     err.code = 'ENOENT';
     throw err;
   }
-  return { title: posts[slug].title };
-};
 
-PostPage.propTypes = {
-  title: PropTypes.string.isRequired,
+  const desc = post.description.replace(/(\r\n|\n|\r)/gm, ' ').substring(0, 120);
+  return {
+    title: post.title,
+    desc,
+    img: post.cover.url,
+    url: getAbsoluteUrl(post.slug),
+  };
 };
 
 export default withRedux(initStore)(PostPage);

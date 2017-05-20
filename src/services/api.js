@@ -52,11 +52,12 @@ function normalize(items) {
       ...cover && { cover },
       ...photos && { photos },
       shares: 0,
+      sharesLoaded: false,
       liked: false,
     };
   });
 
-  // return posts {slug: {post} }
+  // return posts {[slug]: {post}, ...}
   return _keyBy(normalizedItems, 'slug');
 }
 

@@ -15,6 +15,7 @@ export default function CoverPhoto(props) {
           {...props}
           width={settings.mobileCoverPhotoWidth}
           height={settings.mobilCoverPhotoHeight}
+          margin={props.margin === '0' ? '0' : settings.spacingUnit}
           imgType="coverPhotoMobileSizes"
           thumb
         />
@@ -30,5 +31,9 @@ export default function CoverPhoto(props) {
 }
 
 CoverPhoto.propTypes = {
-  url: PropTypes.string.isRequired,
+  margin: PropTypes.string.isRequired,
+};
+
+CoverPhoto.defaultProps = {
+  margin: settings.spacingUnit,
 };

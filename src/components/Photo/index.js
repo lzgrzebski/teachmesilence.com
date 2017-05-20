@@ -8,7 +8,7 @@ import Wrapper from './Wrapper';
 import Source from './Source';
 import Img from './Img';
 
-export default function Photo({ id, url, title, width, height, imgType, thumb }) {
+export default function Photo({ id, url, title, width, height, imgType, thumb, margin }) {
   const sizes = settings[imgType];
   const imgSizesLength = sizes.length - 1;
   const ratio = imgRatio(width, height);
@@ -21,6 +21,7 @@ export default function Photo({ id, url, title, width, height, imgType, thumb })
   return (
     <Wrapper
       paddingTop={`${imgPadding(width, height)}%`}
+      margin={margin}
     >
       {sizes.map((source, i) => (
         <Source
@@ -37,7 +38,7 @@ export default function Photo({ id, url, title, width, height, imgType, thumb })
       )}
       <Img
         alt={title}
-        className="lazy"
+        className={settings.lazyClassName}
         data-src={dataSrc}
         width={width}
         height={height}
@@ -54,9 +55,11 @@ Photo.propTypes = {
   height: PropTypes.number.isRequired,
   imgType: PropTypes.string,
   thumb: PropTypes.bool,
+  margin: PropTypes.string.isRequired,
 };
 
 Photo.defaultProps = {
   imgType: 'imageSizes',
   thumb: false,
+  margin: settings.spacingUnit,
 };

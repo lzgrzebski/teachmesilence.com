@@ -98,10 +98,18 @@ export function shouldLoadPosts(offset = settings.infiniteScrollOffset) {
 }
 
 export function getAbsoluteUrl(slug) {
-  if (!slug) return settings.siteUrl;
-  return `${settings.fbShareUrl}${settings.siteUrl}/post/${slug}`;
+  if (!slug) return `${settings.siteUrl}/`;
+  return `${settings.siteUrl}/post/${slug}/`;
 }
 
 export function getFbShareUrl(slug) {
   return settings.fbShareUrl + getAbsoluteUrl(slug);
+}
+
+export function getFbCountUrl(slug) {
+  return settings.fbCountUrl + getAbsoluteUrl(slug);
+}
+
+export function windowOpen(url) {
+  return window.open(url, 'tms-share', 'status = 1, height = 500, width = 555, resizable = 0');
 }

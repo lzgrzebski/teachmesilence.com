@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import settings from '../../services/settings';
+
 import Wrapper from './Wrapper';
 import Content from './Content';
 import TextWrapper from './TextWrapper';
@@ -15,7 +17,7 @@ import CoverPhoto from '../CoverPhoto';
 export default function Post(props) {
   return (
     <Wrapper>
-      <CoverPhoto key={props.cover.id} {...props.cover} />
+      <CoverPhoto key={props.cover.id} {...props.cover} margin={settings.spacingCover} />
       <Content>
         <TextWrapper>
           <Title>{props.title}</Title>

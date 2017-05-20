@@ -4,13 +4,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import LazyPhotos from '../decorators/LazyPhotos';
-import { shouldLoadPosts } from '../services/helpers';
-import { fetchRecommendedPosts } from '../store/posts/actions';
+import { shouldLoadPosts, getFbShareUrl, windowOpen } from '../services/helpers';
+import { fetchRecommendedPosts, shareClick, fetchSharesNumber } from '../store/posts/actions';
 import { getVisitedPosts, addVisitedPost } from '../store/user/actions';
 import { getCurrentPost, getRecommendedPosts } from '../store/posts/reducer';
 import { saveVisitedPosts } from '../store/_middleware/localStorage';
 import Post from '../components/Post';
 import RecommendedPosts from '../components/RecommendedPosts';
+import NotifyBox from '../components/NotifyBox';
+import Footer from '../components/Footer';
 
 @LazyPhotos
 class SinglePostContainer extends Component {
@@ -25,6 +27,7 @@ class SinglePostContainer extends Component {
         width: PropTypes.number.isRequired,
         height: PropTypes.number.isRequired,
       }),
+      sharesLoaded: PropTypes.bool.isRequired,
     }).isRequired,
     visitedPosts: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     fetchRecommendedPosts: PropTypes.func.isRequired,
@@ -33,13 +36,16 @@ class SinglePostContainer extends Component {
     recommendedPosts: PropTypes.arrayOf(PropTypes.object).isRequired,
     isFetchingRecommendedPosts: PropTypes.bool.isRequired,
     isDownloadedRecommendedPosts: PropTypes.bool.isRequired,
+    fetchSharesNumber: PropTypes.func.isRequired,
+    shareClick: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
     if (this.props.post) {
       this.props.getVisitedPosts(this.props.post.slug);
-      this.slug = this.props.post.slug;
       window.addEventListener('scroll', this.handleScroll);
+      this.props.fetchSharesNumber(this.props.post.slug);
+      this.slug = this.props.post.slug;
     }
   }
 
@@ -55,6 +61,10 @@ class SinglePostContainer extends Component {
 
       if (this.slug !== slug && !this.props.visitedPosts.includes(slug)) {
         this.props.addVisitedPost(this.props.post.slug);
+      }
+
+      if (!this.props.post.sharesLoaded) {
+        this.props.fetchSharesNumber(this.props.post.slug);
       }
 
       this.slug = slug;
@@ -77,10 +87,16 @@ class SinglePostContainer extends Component {
     }
   }, 300)
 
+  handleClick = (slug, shares, liked, e) => {
+    e.preventDefault();
+    if (!liked) windowOpen(getFbShareUrl(slug));
+    this.props.shareClick(slug, shares, liked);
+  }
+
   render() {
     return (
       <main>
-        {this.props.post && <Post {...this.props.post} />}
+        {this.props.post && <Post {...this.props.post} handleClick={this.handleClick} />}
         {this.props.recommendedPosts &&
           <RecommendedPosts
             isDownloaded={this.props.isDownloadedRecommendedPosts}
@@ -88,6 +104,8 @@ class SinglePostContainer extends Component {
             posts={this.props.recommendedPosts}
           />
         }
+        <NotifyBox />
+        <Footer />
       </main>
     );
   }
@@ -104,5 +122,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(
-  mapStateToProps, { getVisitedPosts, addVisitedPost, fetchRecommendedPosts },
+  mapStateToProps,
+  { getVisitedPosts, addVisitedPost, fetchRecommendedPosts, fetchSharesNumber, shareClick },
 )(SinglePostContainer);

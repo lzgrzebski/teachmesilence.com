@@ -12,3 +12,4 @@ export const RECEIVE_POSTS_LINKS = 'posts:RECEIVE_POSTS_LINKS';
 export const SET_RECOMMENDED_POSTS = 'posts:SET_RECOMMENDED_POSTS';
 
 export const SHARE_CLICK = 'posts:SHARE_CLICK';
+export const SET_SHARES_COUNT = 'posts:SET_SHARES_COUNT';

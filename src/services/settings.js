@@ -2,12 +2,15 @@ const UNIT = 33.18;
 
 const settings = {
   siteUrl: 'http://teachmesilence.com',
+  siteTitle: '',
   siteDescription: '',
+  siteImage: '',
 
   person: 'person',
   people: 'people',
   sharedText: 'shared with love',
   fbShareUrl: 'https://www.facebook.com/sharer/sharer.php?u=',
+  fbCountUrl: 'https://graph.facebook.com/?id=',
 
   fontSize: '18px',
   lineHeight: `${UNIT}px`,
@@ -22,6 +25,7 @@ const settings = {
   spacingUnitSmall: `${Math.round(UNIT / 2)}px`,
   spacingUnitLarge: `${Math.round(UNIT * 2)}px`,
   spacingUnitHuge: `${Math.round(UNIT * 4)}px`,
+  spacingCover: '45px',
 
   imageSizes: [360, 375, 768, 1049, 1050],
   coverPhotoSizes: [768, 1050, 1300, 1979, 1980],
@@ -36,6 +40,9 @@ const settings = {
   buttonPad: 10,
   buttonBarSpace: 10,
 
+  isMenuOpenClassName: 'is-menu-open',
+
+  lazyClassName: 'lazy',
   lazySelector: '.lazy',
   lazySuccessClass: 'lazy--loaded',
   lazyOffset: 1000,

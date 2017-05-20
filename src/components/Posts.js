@@ -14,7 +14,10 @@ export default function Posts({ posts, handleEnter, handleClick }) {
     <Wrapper>
       {
         posts.map(post => (
-          <Waypoint key={post.slug} onEnter={waypointData => handleEnter(post.slug, waypointData)}>
+          <Waypoint
+            key={post.slug}
+            onEnter={waypointData => handleEnter(post.slug, post.sharesLoaded, waypointData)}
+          >
             <div>
               <Post {...post} handleClick={handleClick} />
             </div>

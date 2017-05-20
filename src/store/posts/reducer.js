@@ -52,6 +52,17 @@ export default function (state = INITIAL_STATE, action) {
         },
       }, { deep: true });
     }
+    case types.SET_SHARES_COUNT: {
+      const { slug, shares, sharesLoaded } = action;
+      return state.merge({
+        posts: {
+          [slug]: {
+            shares,
+            sharesLoaded,
+          },
+        },
+      }, { deep: true });
+    }
     default:
       return state;
   }

@@ -1,6 +1,8 @@
+import 'whatwg-fetch';
 import * as types from './actionTypes';
 import * as headerActions from '../header/actions';
 import * as userActions from '../user/actions';
+import { getFbCountUrl } from '../../services/helpers';
 import { getPosts, getSinglePost, getMenu, getRecommendedPosts } from '../../services/api';
 
 // check if we can fetch posts
@@ -67,3 +69,15 @@ export const shareClick = (slug, shares, liked) => ({
   shares: liked ? shares - 1 : shares + 1,
   liked: !liked,
 });
+
+export const fetchSharesNumber = slug => async (dispatch) => {
+  const { share: { share_count } } = await fetch(getFbCountUrl(slug)).then(r => r.json());
+
+  return dispatch({
+    type: types.SET_SHARES_COUNT,
+    slug,
+    shares: share_count,
+    sharesLoaded: true,
+  });
+};
+

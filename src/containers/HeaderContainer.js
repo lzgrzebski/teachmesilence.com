@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import settings from '../services/settings';
+
 import { fetchMenu } from '../store/posts/actions';
 import { headerUpdateState } from '../store/header/actions';
 import { getMenuLinks } from '../store/posts/reducer';
@@ -20,14 +22,14 @@ class HeaderContainer extends Component {
   }
 
   componentDidMount() {
-    document.documentElement.classList.toggle('is-menu-open', this.props.isMenuOpen);
+    document.documentElement.classList.toggle(settings.isMenuOpenClassName, this.props.isMenuOpen);
     window.addEventListener('scroll', this.handleScroll);
   }
   componentWillReceiveProps(nextProps) {
-    document.documentElement.classList.toggle('is-menu-open', nextProps.isMenuOpen);
+    document.documentElement.classList.toggle(settings.isMenuOpenClassName, nextProps.isMenuOpen);
   }
   componentWillUnmount() {
-    document.documentElement.classList.remove('is-menu-open');
+    document.documentElement.classList.remove(settings.isMenuOpenClassName);
     window.removeEventListener('scroll', this.handleScroll);
   }
 
