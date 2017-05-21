@@ -6,6 +6,9 @@ const settings = {
   siteDescription: '',
   siteImage: '',
 
+  googleAnalyticsId: 'UA-99654481-1',
+  oneSignalId: '5730a570-9af7-410f-9d95-5a8760a731c2',
+
   person: 'person',
   people: 'people',
   sharedText: 'shared with love',

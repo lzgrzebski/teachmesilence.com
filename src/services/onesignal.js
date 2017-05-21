@@ -1,3 +1,5 @@
+import settings from './settings';
+
 let OneSignal;
 
 export default (enableNotifications) => {
@@ -5,7 +7,7 @@ export default (enableNotifications) => {
 
   OneSignal = window.OneSignal || [];
   OneSignal.push(['init', {
-    appId: '5730a570-9af7-410f-9d95-5a8760a731c2',
+    appId: settings.oneSignalId,
     autoRegister: false,
     persistNotification: false,
     notifyButton: {

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 import settings from '../services/settings';
 import oneSignal from '../services/onesignal';
+import ga from '../services/ga';
 
 import { fetchMenu } from '../store/posts/actions';
 import { headerUpdateState, notifyStatus } from '../store/header/actions';
@@ -26,7 +27,10 @@ class HeaderContainer extends Component {
   componentDidMount() {
     document.documentElement.classList.toggle(settings.isMenuOpenClassName, this.props.isMenuOpen);
     window.addEventListener('scroll', this.handleScroll);
-    if (window) oneSignal(this.props.notifyStatus);
+    if (window) {
+      oneSignal(this.props.notifyStatus);
+      ga()('send', 'pageview');
+    }
   }
   componentWillReceiveProps(nextProps) {
     document.documentElement.classList.toggle(settings.isMenuOpenClassName, nextProps.isMenuOpen);
