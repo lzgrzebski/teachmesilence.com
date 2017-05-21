@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import Wrapper from './Wrapper';
 import ContentWrapper from './ContentWrapper';
@@ -7,10 +7,10 @@ import Title from '../RecommendedPosts/Title';
 import ButtonWrapper from './ButtonWrapper';
 import Button from './Button';
 
-export default function NotifyBox() {
+export default function NotifyBox({ notifyBtn }) {
   const subscribe = (e) => {
-     window.OneSignal.push(["registerForPushNotifications"]);
-     e.preventDefault();
+    window.OneSignal.push(['registerForPushNotifications']);
+    e.preventDefault();
   };
 
   return (
@@ -18,7 +18,7 @@ export default function NotifyBox() {
       <ContentWrapper>
         <Title>If you like this blog, let's keep in  touch!</Title>
         <ButtonWrapper>
-          <Button onClick={subscribe}>Enable notifications</Button>
+          {notifyBtn && <Button onClick={subscribe}>Enable notifications</Button>}
           <Button primary>Follow me on instagram</Button>
         </ButtonWrapper>
       </ContentWrapper>
@@ -27,5 +27,5 @@ export default function NotifyBox() {
 }
 
 NotifyBox.propTypes = {
-
+  notifyBtn: PropTypes.bool.isRequired,
 };

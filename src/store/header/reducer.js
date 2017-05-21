@@ -5,6 +5,7 @@ const INITIAL_STATE = Immutable({
   isMenuOpen: false,
   isPinned: false,
   isFixed: false,
+  notifyBtn: false,
 });
 
 export default function (state = INITIAL_STATE, action) {
@@ -21,6 +22,9 @@ export default function (state = INITIAL_STATE, action) {
     case types.HEADER_UPDATE_STATE: {
       const { isPinned, isFixed } = action;
       return state.merge({ isPinned, isFixed });
+    }
+    case types.NOTIFY_BTN: {
+      return state.merge({ notifyBtn: true });
     }
     default:
       return state;

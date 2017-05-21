@@ -38,6 +38,7 @@ class SinglePostContainer extends Component {
     isDownloadedRecommendedPosts: PropTypes.bool.isRequired,
     fetchSharesNumber: PropTypes.func.isRequired,
     shareClick: PropTypes.func.isRequired,
+    notifyBtn: PropTypes.bool.isRequired,
   }
 
   componentDidMount() {
@@ -104,7 +105,7 @@ class SinglePostContainer extends Component {
             posts={this.props.recommendedPosts}
           />
         }
-        <NotifyBox />
+        <NotifyBox notifyBtn={this.props.notifyBtn} />
         <Footer />
       </main>
     );
@@ -118,6 +119,7 @@ function mapStateToProps(state) {
     isDownloadedRecommendedPosts: state.user.isDownloadedRecommendedPosts,
     isFetchingRecommendedPosts: state.user.isFetchingRecommendedPosts,
     recommendedPosts: getRecommendedPosts(state),
+    notifyBtn: state.header.notifyBtn,
   };
 }
 

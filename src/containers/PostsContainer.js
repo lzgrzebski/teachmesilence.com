@@ -23,6 +23,7 @@ class PostsContainer extends Component {
     setActivePost: PropTypes.func.isRequired,
     shareClick: PropTypes.func.isRequired,
     fetchSharesNumber: PropTypes.func.isRequired,
+    notifyBtn: PropTypes.bool.isRequired,
   }
 
   componentDidMount() {
@@ -63,7 +64,7 @@ class PostsContainer extends Component {
             />)
         }
         {this.props.isFetching && <Loader />}
-        {this.props.isLastPage && <NotifyBox />}
+        {this.props.isLastPage && <NotifyBox notifyBtn={this.props.notifyBtn} />}
         {this.props.isLastPage && <Footer />}
       </main>
     );
@@ -76,6 +77,7 @@ function mapStateToProps(state) {
     page: state.store.page,
     isLastPage: state.store.isLastPage,
     isFetching: state.store.isFetching,
+    notifyBtn: state.header.notifyBtn,
   };
 }
 

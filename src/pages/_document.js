@@ -23,6 +23,7 @@ export default class extends Document {
         <body>
           <Main />
           <NextScript />
+          <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" defer />
         </body>
       </html>
     );
