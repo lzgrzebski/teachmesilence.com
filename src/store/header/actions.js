@@ -19,7 +19,8 @@ export const headerUpdateState = ({ isPinned, isFixed }) => ({
   isFixed,
 });
 
-export const notifyBtn = () => ({
+export const notifyStatus = notifyBtn => ({
   type: types.NOTIFY_BTN,
+  notifyBtn,
 });
 

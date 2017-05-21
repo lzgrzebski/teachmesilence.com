@@ -8,7 +8,7 @@ import settings from '../services/settings';
 import oneSignal from '../services/onesignal';
 
 import { fetchMenu } from '../store/posts/actions';
-import { headerUpdateState, notifyBtn } from '../store/header/actions';
+import { headerUpdateState, notifyStatus } from '../store/header/actions';
 import { getMenuLinks } from '../store/posts/reducer';
 
 import Header from '../components/Header';
@@ -17,7 +17,7 @@ class HeaderContainer extends Component {
   static propTypes = {
     fetchMenu: PropTypes.func.isRequired,
     headerUpdateState: PropTypes.func.isRequired,
-    notifyBtn: PropTypes.func.isRequired,
+    notifyStatus: PropTypes.func.isRequired,
     isMenuOpen: PropTypes.bool.isRequired,
     isFixed: PropTypes.bool.isRequired,
     isPinned: PropTypes.bool.isRequired,
@@ -26,7 +26,7 @@ class HeaderContainer extends Component {
   componentDidMount() {
     document.documentElement.classList.toggle(settings.isMenuOpenClassName, this.props.isMenuOpen);
     window.addEventListener('scroll', this.handleScroll);
-    if (window) oneSignal(this.props.notifyBtn);
+    if (window) oneSignal(this.props.notifyStatus);
   }
   componentWillReceiveProps(nextProps) {
     document.documentElement.classList.toggle(settings.isMenuOpenClassName, nextProps.isMenuOpen);
@@ -103,5 +103,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(
-  mapStateToProps, { fetchMenu, headerUpdateState, notifyBtn },
+  mapStateToProps, { fetchMenu, headerUpdateState, notifyStatus },
 )(HeaderContainer);

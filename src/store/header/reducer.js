@@ -24,7 +24,8 @@ export default function (state = INITIAL_STATE, action) {
       return state.merge({ isPinned, isFixed });
     }
     case types.NOTIFY_BTN: {
-      return state.merge({ notifyBtn: true });
+      const { notifyBtn } = action;
+      return state.merge({ notifyBtn });
     }
     default:
       return state;

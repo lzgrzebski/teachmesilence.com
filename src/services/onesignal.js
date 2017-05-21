@@ -1,38 +1,35 @@
-    let OneSignal;
+let OneSignal;
 
-    export default (enableNotifications) => {
-      if (OneSignal) return;
+export default (enableNotifications) => {
+  if (OneSignal) return;
 
-      OneSignal = window.OneSignal || [];
-      OneSignal.push(['init', {
-        appId: '5730a570-9af7-410f-9d95-5a8760a731c2',
-        autoRegister: false,
-        persistNotification: false,
-        notifyButton: {
-          enable: false,
-        },
-      }]);
+  OneSignal = window.OneSignal || [];
+  OneSignal.push(['init', {
+    appId: '5730a570-9af7-410f-9d95-5a8760a731c2',
+    autoRegister: false,
+    persistNotification: false,
+    notifyButton: {
+      enable: false,
+    },
+  }]);
 
-      OneSignal.push(() => {
-        if (!OneSignal.isPushNotificationsSupported()) return;
+  OneSignal.push(() => {
+    if (!OneSignal.isPushNotificationsSupported()) return;
 
-        OneSignal.isPushNotificationsEnabled((isEnabled) => {
-          if (isEnabled) {
-            console.log('2');
-          } else {
-            enableNotifications();
-          }
-        });
-      });
+    OneSignal.isPushNotificationsEnabled((isEnabled) => {
+      if (!isEnabled) enableNotifications(true);
+    });
 
-      OneSignal.push(() => {
-        OneSignal.on('subscriptionChange', (isSubscribed) => {
-          console.log("The user's subscription state is now:", isSubscribed);
-        });
+    OneSignal.on('subscriptionChange', (isSubscribed) => {
+      if (isSubscribed) enableNotifications(false);
+    });
 
-        OneSignal.on('notificationPermissionChange', (permissionChange) => {
-          const currentPermission = permissionChange.to;
-          console.log('New permission state:', currentPermission);
-        });
-      });
-    };
+    OneSignal.on('notificationPermissionChange', (permissionChange) => {
+      if (permissionChange.to === 'denied') {
+        enableNotifications(false);
+      } else if (permissionChange.to === 'default') {
+        enableNotifications(true);
+      }
+    });
+  });
+};
