@@ -24,4 +24,10 @@
           }
         });
       });
+
+      OneSignal.push(() => {
+        OneSignal.on('subscriptionChange', (isSubscribed) => {
+          console.log("The user's subscription state is now:", isSubscribed);
+        });
+      });
     };
