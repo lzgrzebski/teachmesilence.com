@@ -29,5 +29,10 @@
         OneSignal.on('subscriptionChange', (isSubscribed) => {
           console.log("The user's subscription state is now:", isSubscribed);
         });
+
+        OneSignal.on('notificationPermissionChange', (permissionChange) => {
+          const currentPermission = permissionChange.to;
+          console.log('New permission state:', currentPermission);
+        });
       });
     };
