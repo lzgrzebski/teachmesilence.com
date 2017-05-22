@@ -10,6 +10,8 @@ import ga from '../services/ga';
 
 import { fetchMenu } from '../store/posts/actions';
 import { headerUpdateState, notifyStatus } from '../store/header/actions';
+import { clickTracking } from '../store/user/actions';
+
 import { getMenuLinks } from '../store/posts/reducer';
 
 import Header from '../components/Header';
@@ -22,10 +24,16 @@ class HeaderContainer extends Component {
     isMenuOpen: PropTypes.bool.isRequired,
     isFixed: PropTypes.bool.isRequired,
     isPinned: PropTypes.bool.isRequired,
+    clickTracking: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
-    document.documentElement.classList.toggle(settings.isMenuOpenClassName, this.props.isMenuOpen);
+    if (this.props.isMenuOpen) { // because toggle(class, bool) not working in ie :<
+      document.documentElement.classList.add(settings.isMenuOpenClassName);
+    } else {
+      document.documentElement.classList.remove(settings.isMenuOpenClassName);
+    }
+    console.log(this.props.isMenuOpen);
     window.addEventListener('scroll', this.handleScroll);
     if (window) {
       oneSignal(this.props.notifyStatus);
@@ -33,7 +41,11 @@ class HeaderContainer extends Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    document.documentElement.classList.toggle(settings.isMenuOpenClassName, nextProps.isMenuOpen);
+    if (nextProps.isMenuOpen) { // because toggle(class, bool) not working in ie :<
+      document.documentElement.classList.add(settings.isMenuOpenClassName);
+    } else {
+      document.documentElement.classList.remove(settings.isMenuOpenClassName);
+    }
   }
   componentWillUnmount() {
     document.documentElement.classList.remove(settings.isMenuOpenClassName);
@@ -91,7 +103,11 @@ class HeaderContainer extends Component {
 
   render() {
     return (
-      <Header {...this.props} handleClick={this.handleClick} />
+      <Header
+        {...this.props}
+        handleClick={this.handleClick}
+        clickTracking={this.props.clickTracking}
+      />
     );
   }
 }
@@ -107,5 +123,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(
-  mapStateToProps, { fetchMenu, headerUpdateState, notifyStatus },
+  mapStateToProps, { fetchMenu, headerUpdateState, notifyStatus, clickTracking },
 )(HeaderContainer);

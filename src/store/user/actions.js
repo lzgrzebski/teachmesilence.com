@@ -17,3 +17,7 @@ export const requestRecommendedPosts = () => ({
 export const receiveRecommendedPosts = () => ({
   type: types.RECEIVE_RECOMMENDED_POSTS,
 });
+
+export const clickTracking = type => ({
+  type,
+});

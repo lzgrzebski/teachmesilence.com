@@ -3,11 +3,8 @@ import settings from '../../services/settings';
 
 export default styled.button`
 
-  display: block;
-
-  position:absolute;
-  top: 0;
-  left: 10px;
+  position:relative;
+  display:block;
 
   padding: 12px;
 

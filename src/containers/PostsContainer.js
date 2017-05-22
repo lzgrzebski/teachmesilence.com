@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import LazyPhotos from '../decorators/LazyPhotos';
 import { shouldLoadPosts, getFbShareUrl, windowOpen } from '../services/helpers';
 import { fetchPosts, setActivePost, shareClick, fetchSharesNumber } from '../store/posts/actions';
+import { clickTracking } from '../store/user/actions';
 import { getFullPosts } from '../store/posts/reducer';
 import Posts from '../components/Posts';
 import Loader from '../components/Loader';
@@ -24,6 +25,7 @@ class PostsContainer extends Component {
     shareClick: PropTypes.func.isRequired,
     fetchSharesNumber: PropTypes.func.isRequired,
     notifyBtn: PropTypes.bool.isRequired,
+    clickTracking: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
@@ -64,8 +66,10 @@ class PostsContainer extends Component {
             />)
         }
         {this.props.isFetching && <Loader />}
-        {this.props.isLastPage && <NotifyBox notifyBtn={this.props.notifyBtn} />}
-        {this.props.isLastPage && <Footer />}
+        {this.props.isLastPage && (
+          <NotifyBox notifyBtn={this.props.notifyBtn} clickTracking={this.props.clickTracking} />
+        )}
+        {this.props.isLastPage && <Footer clickTracking={this.props.clickTracking} />}
       </main>
     );
   }
@@ -82,5 +86,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(
-  mapStateToProps, { fetchPosts, setActivePost, shareClick, fetchSharesNumber },
+  mapStateToProps,
+  { fetchPosts, setActivePost, shareClick, fetchSharesNumber, clickTracking },
 )(PostsContainer);

@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 
 import Wrapper from './Wrapper';
 import HeaderWrapper from './HeaderWrapper';
+import HeaderElements from './HeaderElements';
 import Button from './Button';
+import Logo from './Logo';
+import Follow from './Follow';
 import Menu from '../Menu';
 
 export default function Header({ handleClick, isMenuOpen, isFixed, isPinned, links, activePost }) {
@@ -15,7 +18,11 @@ export default function Header({ handleClick, isMenuOpen, isFixed, isPinned, lin
         unpinned={isFixed && !isPinned}
         pinned={isPinned && isFixed}
       >
-        <Button handleClick={handleClick} isMenuOpen={isMenuOpen} pinned={isPinned && isFixed} />
+        <HeaderElements>
+          <Button handleClick={handleClick} isMenuOpen={isMenuOpen} pinned={isPinned && isFixed} />
+          <Logo></Logo>
+          <Follow></Follow>
+        </HeaderElements>
         <Menu
           isMenuOpen={isMenuOpen}
           links={links}

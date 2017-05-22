@@ -4,9 +4,8 @@ import { fontSize } from '../../services/helpers';
 
 export default styled.span`
   ${fontSize('15px')};
+  line-height:35px;
   color: #b3b3b3;
-
-  padding-left:15px;
 
   & a {
     color: #b3b3b3;

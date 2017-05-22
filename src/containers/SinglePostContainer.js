@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import LazyPhotos from '../decorators/LazyPhotos';
 import { shouldLoadPosts, getFbShareUrl, windowOpen } from '../services/helpers';
 import { fetchRecommendedPosts, shareClick, fetchSharesNumber } from '../store/posts/actions';
-import { getVisitedPosts, addVisitedPost } from '../store/user/actions';
+import { getVisitedPosts, addVisitedPost, clickTracking } from '../store/user/actions';
 import { getCurrentPost, getRecommendedPosts } from '../store/posts/reducer';
 import { saveVisitedPosts } from '../store/_middleware/localStorage';
 import Post from '../components/Post';
@@ -39,6 +39,7 @@ class SinglePostContainer extends Component {
     fetchSharesNumber: PropTypes.func.isRequired,
     shareClick: PropTypes.func.isRequired,
     notifyBtn: PropTypes.bool.isRequired,
+    clickTracking: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
@@ -105,8 +106,8 @@ class SinglePostContainer extends Component {
             posts={this.props.recommendedPosts}
           />
         }
-        <NotifyBox notifyBtn={this.props.notifyBtn} />
-        <Footer />
+        <NotifyBox notifyBtn={this.props.notifyBtn} clickTracking={this.props.clickTracking} />
+        <Footer clickTracking={this.props.clickTracking} />
       </main>
     );
   }
@@ -125,5 +126,12 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { getVisitedPosts, addVisitedPost, fetchRecommendedPosts, fetchSharesNumber, shareClick },
+  {
+    getVisitedPosts,
+    addVisitedPost,
+    fetchRecommendedPosts,
+    fetchSharesNumber,
+    shareClick,
+    clickTracking,
+  },
 )(SinglePostContainer);

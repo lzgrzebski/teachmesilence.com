@@ -5,6 +5,10 @@ const settings = {
   siteTitle: '',
   siteDescription: '',
   siteImage: '',
+  siteAuthor: 'Łukasz Zgrzebski',
+  instagramUrl: 'https://www.instagram.com/mykbilde/',
+  linkedinUrl: 'https://www.linkedin.com/in/lukasz-zgrzebski/',
+  githubUrl: 'https://github.com/lzgrzebski/',
 
   googleAnalyticsId: 'UA-99654481-1',
   oneSignalId: '5730a570-9af7-410f-9d95-5a8760a731c2',
@@ -14,6 +18,12 @@ const settings = {
   sharedText: 'shared with love',
   fbShareUrl: 'https://www.facebook.com/sharer/sharer.php?u=',
   fbCountUrl: 'https://graph.facebook.com/?id=',
+
+  notifyBoxTitle: 'If you like this blog, let\'s keep in  touch!',
+  notifyBoxBtnPush: 'Enable notifications',
+  notifyBoxBtnInstagram: 'Follow me on instagram', // too long for mobile
+
+  footerText: 'made by',
 
   fontSize: '18px',
   lineHeight: `${UNIT}px`,

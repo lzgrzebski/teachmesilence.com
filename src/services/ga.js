@@ -1,3 +1,5 @@
+import settings from './settings';
+
 let ga;
 
 export default () => {
@@ -6,8 +8,6 @@ export default () => {
   window.ga = window.ga || (() => { (window.ga.q = window.ga.q || []).push(arguments); });
   ga = window.ga;
   ga.l = +new Date();
-  ga('create', 'UA-99654481-1', 'auto');
+  ga('create', settings.googleAnalyticsId, 'auto');
   return ga;
 };
-
-
