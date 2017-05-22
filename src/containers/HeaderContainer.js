@@ -33,7 +33,6 @@ class HeaderContainer extends Component {
     } else {
       document.documentElement.classList.remove(settings.isMenuOpenClassName);
     }
-    console.log(this.props.isMenuOpen);
     window.addEventListener('scroll', this.handleScroll);
     if (window) {
       oneSignal(this.props.notifyStatus);
@@ -88,6 +87,7 @@ class HeaderContainer extends Component {
     }
 
     if (shouldUpdateFixed || shouldUpdatePinned) {
+      console.log(shouldUpdateFixed, shouldUpdatePinned); // for debugging only
       _raf(() => this.props.headerUpdateState({
         isPinned: shouldUpdatePinned ? !this.props.isPinned : this.props.isPinned,
         isFixed: shouldUpdateFixed ? !this.props.isFixed : this.props.isFixed,

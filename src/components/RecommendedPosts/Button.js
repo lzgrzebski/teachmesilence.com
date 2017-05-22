@@ -8,7 +8,7 @@ export default styled.button`
 
   position: relative;
   height: 47px;
-  padding: 0 55px;
+  padding: 0 45px;
 
   color: #fff;
   background-color: transparent;
@@ -51,6 +51,11 @@ export default styled.button`
   &:active:after {
       background-color: ${settings.colorLinks};
   }
+
+  ${from('tablet')(css`
+    padding-left: 55px;
+    padding-right: 55px;
+  `)}
 
   ${from('desktop')(css`
     &:hover:after {

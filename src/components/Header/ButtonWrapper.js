@@ -6,7 +6,7 @@ export default styled.button`
   position:relative;
   display:block;
 
-  padding: 12px;
+  padding: 0;
 
   width: ${settings.buttonWidth}px;
   height: ${settings.buttonHeight}px;

@@ -7,6 +7,9 @@ export default styled.div`
   right:0;
   z-index:3;
 
+  padding-left:15px;
+  padding-right:15px;
+
   ${({ unfixed }) => (unfixed && css`
       position: absolute;
       transform: translateY(0);

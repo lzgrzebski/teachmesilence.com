@@ -7,6 +7,8 @@ import HeaderElements from './HeaderElements';
 import Button from './Button';
 import Logo from './Logo';
 import Follow from './Follow';
+import FollowIcon from './FollowIcon';
+import FollowText from './FollowText';
 import Menu from '../Menu';
 
 export default function Header({ handleClick, isMenuOpen, isFixed, isPinned, links, activePost }) {
@@ -20,8 +22,11 @@ export default function Header({ handleClick, isMenuOpen, isFixed, isPinned, lin
       >
         <HeaderElements>
           <Button handleClick={handleClick} isMenuOpen={isMenuOpen} pinned={isPinned && isFixed} />
-          <Logo></Logo>
-          <Follow></Follow>
+          <Logo />
+          <Follow>
+            <FollowIcon />
+            <FollowText>Follow me</FollowText>
+          </Follow>
         </HeaderElements>
         <Menu
           isMenuOpen={isMenuOpen}

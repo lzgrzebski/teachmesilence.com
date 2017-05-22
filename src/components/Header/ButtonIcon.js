@@ -8,6 +8,7 @@ export default styled.span`
   left: ${settings.buttonPad}px;
   right: ${settings.buttonPad}px;
   height: ${(settings.barThickness * 2) + settings.buttonBarSpace}px;
+  top: 20px;
   
   &:before,
   &:after {
