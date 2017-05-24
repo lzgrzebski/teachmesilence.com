@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import settings from '../../services/settings';
+import { TOP_INSTAGRAM_CLICK } from '../../store/user/actionTypes';
+
 import Wrapper from './Wrapper';
 import HeaderWrapper from './HeaderWrapper';
 import HeaderElements from './HeaderElements';
@@ -11,7 +14,18 @@ import FollowIcon from './FollowIcon';
 import FollowText from './FollowText';
 import Menu from '../Menu';
 
-export default function Header({ handleClick, isMenuOpen, isFixed, isPinned, links, activePost }) {
+export default function Header({
+  handleClick,
+  isMenuOpen,
+  isFixed,
+  isPinned,
+  links,
+  activePost,
+  clickTracking,
+}) {
+  const handleInstagramClick = () => {
+    clickTracking(TOP_INSTAGRAM_CLICK);
+  };
   return (
     <Wrapper active={isMenuOpen}>
       <HeaderWrapper
@@ -23,10 +37,12 @@ export default function Header({ handleClick, isMenuOpen, isFixed, isPinned, lin
         <HeaderElements>
           <Button handleClick={handleClick} isMenuOpen={isMenuOpen} pinned={isPinned && isFixed} />
           <Logo />
-          <Follow>
-            <FollowIcon />
-            <FollowText>Follow me</FollowText>
-          </Follow>
+          <a href={settings.instagramUrl} onClick={handleInstagramClick} rel="noopener noreferrer" target="_blank">
+            <Follow>
+              <FollowIcon />
+              <FollowText>Follow me</FollowText>
+            </Follow>
+          </a>
         </HeaderElements>
         <Menu
           isMenuOpen={isMenuOpen}
@@ -41,6 +57,7 @@ export default function Header({ handleClick, isMenuOpen, isFixed, isPinned, lin
 
 Header.propTypes = {
   handleClick: PropTypes.func.isRequired,
+  clickTracking: PropTypes.func.isRequired,
   isMenuOpen: PropTypes.bool.isRequired,
   isFixed: PropTypes.bool.isRequired,
   isPinned: PropTypes.bool.isRequired,

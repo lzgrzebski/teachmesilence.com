@@ -18,4 +18,6 @@ export default styled.button`
   
   z-index:4;
 
+  cursor:pointer;
+
 `;

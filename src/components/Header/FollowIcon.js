@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { from } from '../../services/helpers';
+
 import getIcon from '../../styles/tools/sprite';
 
 export default styled.span`
@@ -11,12 +13,14 @@ export default styled.span`
   width: 26px;
   height: 26px;
 
-  margin-right: 9px;
-
   vertical-align: -18%;
 
   cursor: pointer;
 
   display: inline-block;
+
+  ${from('tablet')(css`
+    margin-right: 9px;
+  `)}
 
 `;

@@ -54,6 +54,7 @@ class HeaderContainer extends Component {
   handleClick = () => {
     this.props.fetchMenu();
   }
+
   // TODO: use validators instead of many ifs
   headerState() {
     const isScrollingDown = this.currentScrollPosition >= this.lastKnownScrollPosition;

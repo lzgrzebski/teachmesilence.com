@@ -8,4 +8,8 @@ export default styled.div`
 
   height:100%;
 
+  a {
+    border: 0;
+  }
+
 `;
