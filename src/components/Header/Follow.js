@@ -6,7 +6,7 @@ import Button from '../RecommendedPosts/Button';
 
 export default styled(Button)`
 
-  background: ${settings.colorLinks};
+  background: transparent;
   border: none;
   color: #fff;
 
@@ -15,7 +15,6 @@ export default styled(Button)`
   ${until('tablet')(css` /*not mobile first*/
     border-radius: 50%;
     padding: 0;
-    width: 47px;
   `)}
 
   ${from('tablet')(css`
@@ -25,6 +24,7 @@ export default styled(Button)`
 
   &:hover span:after {
     background-color:#fff;
+    /*background-color: #ff5a5f;*/
   }
 
   &:after { /*hacky removing parent after*/ 

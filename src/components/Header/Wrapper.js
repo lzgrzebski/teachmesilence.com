@@ -12,7 +12,7 @@ export default styled.header`
     &:after {
       content: '';
       position: fixed;
-      will-change:transform, opacity;
+      will-change: transform, opacity, visibility;
       z-index: 2;
       width: 100%;
       height: 100%;

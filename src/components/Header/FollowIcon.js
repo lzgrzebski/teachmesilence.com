@@ -5,7 +5,7 @@ import getIcon from '../../styles/tools/sprite';
 
 export default styled.span`
 
-  background-image: url(${getIcon('instagramWhite')});
+  background-image: url(${getIcon('instagramRed')});
 
   background-repeat: no-repeat;
   background-position: 50% 50%;

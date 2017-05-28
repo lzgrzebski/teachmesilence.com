@@ -5,8 +5,8 @@ export default styled.span`
 
   display: block;
   position: absolute;
-  left: ${settings.buttonPad}px;
-  right: ${settings.buttonPad}px;
+  left: 0;
+  right: 0;
   height: ${(settings.barThickness * 2) + settings.buttonBarSpace}px;
   top: 19px;
   

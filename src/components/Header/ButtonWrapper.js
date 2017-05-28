@@ -8,7 +8,7 @@ export default styled.button`
 
   padding: 0;
 
-  width: ${settings.buttonWidth}px;
+  width: 35px;
   height: ${settings.buttonHeight}px;
 
   -webkit-appearance: normal;

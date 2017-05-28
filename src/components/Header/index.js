@@ -36,7 +36,7 @@ export default function Header({
       >
         <HeaderElements>
           <Button handleClick={handleClick} isMenuOpen={isMenuOpen} pinned={isPinned && isFixed} />
-          <Logo />
+          <img src="static/logo3.svg" style={{ width: '47px' }} alt="logo" />
           <a href={settings.instagramUrl} onClick={handleInstagramClick} rel="noopener noreferrer" target="_blank">
             <Follow>
               <FollowIcon />

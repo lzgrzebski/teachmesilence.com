@@ -1,5 +1,3 @@
-import { injectGlobal } from 'styled-components';
-
 import boxSizing from './generic/boxSizing';
 import normalize from './generic/normalize';
 import reset from './generic/reset';
@@ -10,7 +8,7 @@ import images from './elements/images';
 import links from './elements/links';
 import lazy from './elements/lazy';
 
-export default injectGlobal`
+export default `
 
   /* GENERIC */
   ${boxSizing}

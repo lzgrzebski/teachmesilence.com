@@ -47,7 +47,7 @@
     "redux-devtools-extension": "^2.13.0",
     "redux-thunk": "^2.2.0",
     "seamless-immutable": "^7.1.2",
-    "styled-components": "^1.4.4",
+    "styled-components": "^2.0.0",
     "whatwg-fetch": "^2.0.3"
   }
 }

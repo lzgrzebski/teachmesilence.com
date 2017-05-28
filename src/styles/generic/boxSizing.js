@@ -1,19 +1,13 @@
-import { css } from 'styled-components';
-
-export default css`
+export default `
 
   html {
     box-sizing: border-box;
   }
 
-  * {
-
-    &,
-    &:before,
-    &:after {
-      box-sizing: inherit;
-    }
-
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
   }
   
 `;

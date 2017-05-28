@@ -12,21 +12,23 @@ export default styled.div`
 
   ${({ unfixed }) => (unfixed && css`
       position: absolute;
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
       transition: background 0.2s ease-in-out;
   `)};
 
   ${({ unpinned }) => (unpinned && css`
       position: fixed;
-      transform: translateY(-100%);
+      transform: translate3d(0, -100%, 0);
   `)};
 
   ${({ pinned }) => (pinned && css`
       position: fixed;
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
       transition: transform 0.2s ease-in-out;
   `)};
 
   background: ${({ pinned }) => (pinned ? '#fff' : 'transparent')};
   box-shadow: ${({ pinned }) => (pinned ? '0 2px 2px -2px rgba(0,0,0,.15)' : 'none')};
+
+  will-change: transform, background, box-shadow;
 `;

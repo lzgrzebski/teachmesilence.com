@@ -1,8 +1,7 @@
-import { css } from 'styled-components';
 import settings from '../../services/settings';
 import { pxTo, lineHeight } from '../../services/helpers';
 
-export default css`
+export default `
 
   html {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
@@ -14,9 +13,10 @@ export default css`
 
     color: ${settings.colorBase};
     background-color: ${settings.backgroundBase};
-
-    &.is-menu-open {
-      overflow:hidden;
-    }
   }
+
+  html.is-menu-open {
+    overflow:hidden;
+  }
+
 `;

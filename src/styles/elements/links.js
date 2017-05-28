@@ -1,9 +1,8 @@
-import { css } from 'styled-components';
 import settings from '../../services/settings';
 
 const colorLinks = settings.colorLinks;
 
-export default css`
+export default `
 
   a {
     text-decoration: none;
@@ -11,9 +10,10 @@ export default css`
 
     color: ${colorLinks};
 
-    &:hover {
-      cursor:pointer;
-    }
+  }
+
+  a:hover {
+    cursor:pointer;
   }
   
 `;
