@@ -88,7 +88,6 @@ class HeaderContainer extends Component {
     }
 
     if (shouldUpdateFixed || shouldUpdatePinned) {
-      console.log(shouldUpdateFixed, shouldUpdatePinned); // for debugging only
       _raf(() => this.props.headerUpdateState({
         isPinned: shouldUpdatePinned ? !this.props.isPinned : this.props.isPinned,
         isFixed: shouldUpdateFixed ? !this.props.isFixed : this.props.isFixed,

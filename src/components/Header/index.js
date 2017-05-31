@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 
 import settings from '../../services/settings';
 import { TOP_INSTAGRAM_CLICK } from '../../store/user/actionTypes';
@@ -36,9 +37,11 @@ export default function Header({
       >
         <HeaderElements>
           <Button handleClick={handleClick} isMenuOpen={isMenuOpen} pinned={isPinned && isFixed} />
-          <img src="static/logo3.svg" style={{ width: '47px' }} alt="logo" />
+          <Link prefetch href="/">
+            <Logo pinned={isPinned && isFixed} />
+          </Link>
           <a href={settings.instagramUrl} onClick={handleInstagramClick} rel="noopener noreferrer" target="_blank">
-            <Follow>
+            <Follow pinned={isPinned && isFixed} active={isMenuOpen}>
               <FollowIcon />
               <FollowText>Follow me</FollowText>
             </Follow>

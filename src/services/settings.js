@@ -2,8 +2,8 @@ const UNIT = 33.18;
 
 const settings = {
   siteUrl: 'http://teachmesilence.com',
-  siteTitle: '',
-  siteDescription: '',
+  siteTitle: 'teachmesilence.com - blog',
+  siteDescription: 'Quiet boring photographs.',
   siteImage: '',
   siteAuthor: 'Łukasz Zgrzebski',
   instagramUrl: 'https://www.instagram.com/mykbilde/',
@@ -12,6 +12,7 @@ const settings = {
 
   googleAnalyticsId: 'UA-99654481-1',
   oneSignalId: '5730a570-9af7-410f-9d95-5a8760a731c2',
+  oneSignalSafariId: 'web.onesignal.auto.1de7b938-6047-48aa-bcdd-0245aac21a82',
 
   person: 'person',
   people: 'people',
@@ -52,6 +53,9 @@ const settings = {
   barThickness: 3,
   buttonPad: 10,
   buttonBarSpace: 10,
+
+  pinnedColor: '#666',
+  unpinnedColor: '#fff',
 
   isMenuOpenClassName: 'is-menu-open',
 

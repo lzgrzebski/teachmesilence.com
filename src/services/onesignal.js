@@ -8,6 +8,7 @@ export default (enableNotifications) => {
   OneSignal = window.OneSignal || [];
   OneSignal.push(['init', {
     appId: settings.oneSignalId,
+    safari_web_id: settings.oneSignalSafariId,
     autoRegister: false,
     persistNotification: false,
     notifyButton: {

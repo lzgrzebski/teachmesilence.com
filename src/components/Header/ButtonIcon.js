@@ -17,14 +17,14 @@ export default styled.span`
     left: 0;
     width: 100%;
     height: ${settings.barThickness}px;
-    background-color: #fff;
+    background-color: ${settings.unpinnedColor};
     content: "";
     transition: transform .3s cubic-bezier(.4,0,0,1);
     transform-origin: center left;
-    will-change:transform;
+    will-change: transform;
 
     ${({ isMenuOpen, pinned }) => ((isMenuOpen || pinned) && css`
-      background:#555;
+      background: ${settings.pinnedColor};
     `)}
   }
 

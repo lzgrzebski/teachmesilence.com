@@ -12,6 +12,7 @@ export default styled.button`
   height: ${settings.buttonHeight}px;
 
   -webkit-appearance: normal;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
   background: none;
   border: none;
   outline:none;
