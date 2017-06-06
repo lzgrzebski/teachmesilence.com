@@ -96,7 +96,7 @@ class HeaderContainer extends Component {
   }
 
   handleScroll = _throttle(() => {
-    this.currentScrollPosition = document && document.body.scrollTop;
+    this.currentScrollPosition = window && window.scrollY;
     this.headerState();
     this.lastKnownScrollPosition = this.currentScrollPosition;
   }, 200)

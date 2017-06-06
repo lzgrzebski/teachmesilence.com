@@ -1,7 +1,7 @@
 const UNIT = 33.18;
 
 const settings = {
-  siteUrl: 'http://teachmesilence.com',
+  siteUrl: 'https://www.teachmesilence.com',
   siteTitle: 'teachmesilence.com - blog',
   siteDescription: 'Quiet boring photographs.',
   siteImage: '',

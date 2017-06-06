@@ -23,7 +23,7 @@ export default function Layout({ children, title, desc, img, url }) {
         <meta property="og:type" content="article" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={desc} />
-        <meta property="og:image" content={img} />
+        <meta property="og:image" content={`https:${img}`} />
         <link rel="manifest" href="/manifest.json" />
       </Head>
       <HeaderContainer />

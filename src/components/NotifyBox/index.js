@@ -26,15 +26,11 @@ export default function NotifyBox({ notifyBtn, clickTracking }) {
         <Title>{settings.notifyBoxTitle}</Title>
         <ButtonWrapper>
           {notifyBtn && <Button onClick={handleSubscribe}>{settings.notifyBoxBtnPush}</Button>}
-          <Button
-            primary
-            onClick={handleInstagramClick}
-            href={settings.instagramUrl}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            {settings.notifyBoxBtnInstagram}
-          </Button>
+          <a href={settings.instagramUrl} onClick={handleInstagramClick} rel="noopener noreferrer" target="_blank">
+            <Button primary>
+              {settings.notifyBoxBtnInstagram}
+            </Button>
+          </a>
         </ButtonWrapper>
       </ContentWrapper>
     </Wrapper>
