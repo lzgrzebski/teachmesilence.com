@@ -3,8 +3,8 @@ const UNIT = 33.18;
 const settings = {
   siteUrl: 'https://www.teachmesilence.com',
   siteTitle: 'teachmesilence.com - blog',
-  siteDescription: 'Quiet boring photographs.',
-  siteImage: '',
+  siteDescription: 'Quiet, boring analog photographs.',
+  siteImage: 'https://images.contentful.com/k3oz0f9ubslk/56vvkMBB4Akaw00muEMQ0I/f4466eb5c20f14cc8d924513cf6b43a9/1.jpg',
   siteAuthor: 'Łukasz Zgrzebski',
   instagramUrl: 'https://www.instagram.com/mykbilde/',
   linkedinUrl: 'https://www.linkedin.com/in/lukasz-zgrzebski/',

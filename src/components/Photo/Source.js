@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { sourceSrcSet } from '../../services/helpers';
 
 export default function Source({ url, width, height, isLast, fullWidth, fullHeight, thumb }) {
-  const endWidth = isLast ? fullWidth : width;
-  const endHeight = isLast ? fullHeight : height;
+  const endWidth = isLast ? (fullWidth / 2).toFixed(0) : width;
+  const endHeight = isLast ? (fullHeight / 2).toFixed(0) : height;
 
   return (
     <source

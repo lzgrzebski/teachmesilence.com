@@ -21,11 +21,15 @@ app.prepare()
 
   server.get('/OneSignalSDKUpdaterWorker.js', (req, res) => {
     res.setHeader('Content-Type', 'text/javascript');
+    res.setHeader('Cache-Control', 'public, max-age=2592000');
+    res.setHeader('Expires', new Date(Date.now() + 2592000000).toUTCString());
     res.send(fs.readFileSync('./OneSignalSDKUpdaterWorker.js', 'utf8'));
   });
 
   server.get('/OneSignalSDKWorker.js', (req, res) => {
     res.setHeader('Content-Type', 'text/javascript');
+    res.setHeader('Cache-Control', 'public, max-age=2592000');
+    res.setHeader('Expires', new Date(Date.now() + 2592000000).toUTCString());
     res.send(fs.readFileSync('./OneSignalSDKWorker.js', 'utf8'));
   });
 
