@@ -42,8 +42,8 @@ const settings = {
   spacingCover: '45px',
 
   imageSizes: [360, 375, 768, 1049, 1050],
-  coverPhotoSizes: [768, 1050, 1300, 1979, 1980],
-  coverPhotoMobileSizes: [360, 375, 767, 768],
+  coverPhotoSizes: [768, 1050, 1300, 1919, 1920],
+  coverPhotoMobileSizes: [360, 375, 692, 693],
 
   mobileCoverPhotoWidth: 768,
   mobilCoverPhotoHeight: 800,
