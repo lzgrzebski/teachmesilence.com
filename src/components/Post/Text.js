@@ -12,6 +12,8 @@ export default styled.p`
 
     margin-bottom: 20px;
 
+    color: #666;
+
     ${from('tablet')(css`
 
       ${fontSize('20px')}
