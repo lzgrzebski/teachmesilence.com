@@ -9,6 +9,7 @@ import { fetchRecommendedPosts, shareClick, fetchSharesNumber } from '../store/p
 import { getVisitedPosts, addVisitedPost, clickTracking } from '../store/user/actions';
 import { getCurrentPost, getRecommendedPosts } from '../store/posts/reducer';
 import { saveVisitedPosts } from '../store/_middleware/localStorage';
+import Main from '../components/Main';
 import Post from '../components/Post';
 import RecommendedPosts from '../components/RecommendedPosts';
 import NotifyBox from '../components/NotifyBox';
@@ -97,7 +98,7 @@ class SinglePostContainer extends Component {
 
   render() {
     return (
-      <main>
+      <Main>
         {this.props.post && <Post {...this.props.post} handleClick={this.handleClick} />}
         {this.props.recommendedPosts &&
           <RecommendedPosts
@@ -108,7 +109,7 @@ class SinglePostContainer extends Component {
         }
         <NotifyBox notifyBtn={this.props.notifyBtn} clickTracking={this.props.clickTracking} />
         <Footer clickTracking={this.props.clickTracking} />
-      </main>
+      </Main>
     );
   }
 }

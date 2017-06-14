@@ -3,7 +3,7 @@ import { from } from '../../services/helpers';
 
 export default styled.div`
 
-    height:70px;
+    height: 60px;
     top: 0;
     left: 0;
     right: 0;
@@ -15,6 +15,8 @@ export default styled.div`
     ${from('tablet')(css`
         padding-left: 25px;
         padding-right: 35px;
+
+        height: 70px;
     `)}
 
     ${({ unfixed }) => (unfixed && css`

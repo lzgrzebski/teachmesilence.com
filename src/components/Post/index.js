@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import settings from '../../services/settings';
+import Waypoint from 'react-waypoint';
 
 import Wrapper from './Wrapper';
 import Content from './Content';
@@ -12,12 +11,10 @@ import Text from './Text';
 import Social from '../Social';
 
 import Photo from '../Photo';
-import CoverPhoto from '../CoverPhoto';
 
 export default function Post(props) {
   return (
     <Wrapper>
-      <CoverPhoto key={props.cover.id} {...props.cover} margin={settings.spacingCover} />
       <Content>
         <TextWrapper>
           <Title>{props.title}</Title>
@@ -28,12 +25,20 @@ export default function Post(props) {
             <Photo key={photo.id} {...photo} />,
           )}
         </section>
-        <Social
-          slug={props.slug}
-          shares={props.shares}
-          liked={props.liked}
-          handleClick={props.handleClick}
-        />
+        <Waypoint
+          topOffset="100px"
+          onEnter={waypointData =>
+          props.handleEnterSocial(props.slug, props.sharesLoaded, waypointData)}
+        >
+          <div>
+            <Social
+              slug={props.slug}
+              shares={props.shares}
+              liked={props.liked}
+              handleClick={props.handleClick}
+            />
+          </div>
+        </Waypoint>
       </Content>
     </Wrapper>
   );
@@ -44,13 +49,9 @@ Post.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   photos: PropTypes.arrayOf(PropTypes.object).isRequired,
-  cover: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-  }).isRequired,
   shares: PropTypes.number.isRequired,
   liked: PropTypes.bool.isRequired,
+  sharesLoaded: PropTypes.bool.isRequired,
   handleClick: PropTypes.func.isRequired,
+  handleEnterSocial: PropTypes.func.isRequired,
 };

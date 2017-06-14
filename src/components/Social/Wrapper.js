@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-import { from } from '../../services/helpers';
+import styled from 'styled-components';
 
 export default styled.a`
     display: inline-block;
@@ -7,9 +6,4 @@ export default styled.a`
 
     padding-left: 15px;
     padding-right: 15px;
-
-    ${from('desktopFull')(css`
-      padding-left: 0;
-      padding-right: 0;
-    `)}
 `;

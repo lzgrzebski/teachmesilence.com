@@ -11,10 +11,14 @@ export default styled.h1`
 
     margin-left:-2px;
     margin-top: ${settings.spacingUnitTiny};
-    margin-bottom: ${settings.spacingUnitSmall};
+    margin-bottom: 4px;
 
     ${from('tablet')(css`
-      ${fontSize('53px')}
+      ${fontSize('43px')}
+      margin-top: ${settings.spacingUnitSmall};
+      margin-bottom: ${settings.spacingUnitSmall};
+
+      padding-top:10px;
     `)}
 
 `;

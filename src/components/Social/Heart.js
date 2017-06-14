@@ -1,13 +1,10 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import getIcon from '../../styles/tools/sprite';
 
-export default styled.span`
+const HeartIcon = styled.svg`
 
-  background-image: ${({ liked }) => (liked ? `url(${getIcon('heartFull')})` : `url(${getIcon('heart')})`)};
-
-  background-repeat:no-repeat;
-  background-position:50% 50%;
-  background-size: 100%;
+  fill: #ff5a5f;
   width: 32px;
   height: 32px;
   opacity: ${({ liked }) => (liked ? '1' : '0.75')};;
@@ -26,3 +23,15 @@ export default styled.span`
   }
 
 `;
+
+const Heart = ({ liked }) => (
+  <HeartIcon liked={liked}>
+    <use xlinkHref={`#${liked ? 'heartFull' : 'heart'}`} />
+  </HeartIcon>
+);
+
+Heart.propTypes = {
+  liked: PropTypes.bool.isRequired,
+};
+
+export default Heart;

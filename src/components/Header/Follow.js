@@ -7,14 +7,14 @@ export default styled(Button)`
 
   background: transparent;
   border: none;
-  color: ${({ pinned, active }) => (pinned || active ? settings.pinnedColor : settings.unpinnedColor)};
+  color: ${settings.pinnedColor};
 
   z-index:4;
 
   padding:0;
 
   &:hover span:after {
-    background-color: ${({ pinned, active }) => (pinned || active ? settings.colorLinks : settings.unpinnedColor)};;
+    background-color: ${settings.colorLinks};;
   }
 
   &:after { /*hacky removing parent after*/ 

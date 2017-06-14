@@ -17,22 +17,18 @@ export default styled.span`
     left: 0;
     width: 100%;
     height: ${settings.barThickness}px;
-    background-color: ${settings.unpinnedColor};
+    background-color: ${settings.pinnedColor};
     content: "";
     transition: transform .3s cubic-bezier(.4,0,0,1);
     transform-origin: center left;
     will-change: transform;
-
-    ${({ isMenuOpen, pinned }) => ((isMenuOpen || pinned) && css`
-      background: ${settings.pinnedColor};
-    `)}
   }
 
   &:before {
     top: 0;
 
     ${({ isMenuOpen }) => (isMenuOpen && css`
-      transform: rotate(45deg) translateY(-8px);
+      transform: rotate(45deg) translateY(-9px);
     `)}
   }
 
@@ -40,7 +36,7 @@ export default styled.span`
     bottom:0;
 
     ${({ isMenuOpen }) => (isMenuOpen && css`
-      transform: rotate(-45deg) translateY(8px);
+      transform: rotate(-45deg) translateY(9px);
     `)}
   }
 

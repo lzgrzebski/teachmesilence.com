@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { from } from '../../services/helpers';
 
 const Logo = props => (
   <LogoWrapper viewBox="0 0 47 47" {...props}>
@@ -9,18 +10,22 @@ const Logo = props => (
 );
 
 const LogoWrapper = styled.svg`
-  width: 47px;
+  width: 40px;
+
+  ${from('tablet')(css`
+    width: 47px;
+  `)}
 
   cursor: pointer;
   
   & .circle {
-    fill: ${({ pinned }) => (pinned ? '#666' : '#fff')};
+    fill: #666;
   }
 
   & .hill {
     fill:none;
     stroke-width: 2px;
-    stroke: ${({ pinned }) => (pinned ? '#666' : '#fff')};
+    stroke: #666;
     stroke-miterlimit: 10;
   }
   

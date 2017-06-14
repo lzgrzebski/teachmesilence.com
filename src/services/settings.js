@@ -50,7 +50,7 @@ const settings = {
 
   buttonWidth: 55,
   buttonHeight: 55,
-  barThickness: 3,
+  barThickness: 2,
   buttonPad: 10,
   buttonBarSpace: 10,
 

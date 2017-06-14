@@ -10,14 +10,14 @@ export default styled.p`
 
     white-space: pre-line; 
 
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 
     ${from('tablet')(css`
 
-      ${fontSize('21px')}
+      ${fontSize('20px')}
       letter-spacing: -.003em;
 
-      margin-bottom: 53px;
+      margin-bottom: 35px;
 
     `)}
 `;

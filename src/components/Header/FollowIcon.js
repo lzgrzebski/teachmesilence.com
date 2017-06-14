@@ -1,15 +1,10 @@
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { from, until } from '../../services/helpers';
 
-import getIcon from '../../styles/tools/sprite';
+const FollowIcon = styled.svg`
 
-export default styled.span`
-
-  background-image: url(${getIcon('instagramRed')});
-
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: 100%;
+  fill: #ff5a5f;
   width: 26px;
   height: 26px;
 
@@ -30,3 +25,9 @@ export default styled.span`
   `)}
 
 `;
+
+export default () => (
+  <FollowIcon>
+    <use xlinkHref="#instagram" />
+  </FollowIcon>
+);

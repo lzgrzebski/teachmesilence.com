@@ -8,6 +8,7 @@ import { shouldLoadPosts, getFbShareUrl, windowOpen } from '../services/helpers'
 import { fetchPosts, setActivePost, shareClick, fetchSharesNumber } from '../store/posts/actions';
 import { clickTracking } from '../store/user/actions';
 import { getFullPosts } from '../store/posts/reducer';
+import Main from '../components/Main';
 import Posts from '../components/Posts';
 import Loader from '../components/Loader';
 import NotifyBox from '../components/NotifyBox';
@@ -41,8 +42,11 @@ class PostsContainer extends Component {
     }
   }, 200)
 
-  handleEnter = (slug, sharesLoaded) => {
+  handleEnter = (slug) => {
     this.props.setActivePost(slug);
+  }
+
+  handleEnterSocial = (slug, sharesLoaded) => {
     if (!sharesLoaded) {
       this.props.fetchSharesNumber(slug);
     }
@@ -56,13 +60,14 @@ class PostsContainer extends Component {
 
   render() {
     return (
-      <main onScroll={this.handleScroll}>
+      <Main onScroll={this.handleScroll}>
         {this.props.posts &&
           (
             <Posts
               posts={this.props.posts}
               handleEnter={this.handleEnter}
               handleClick={this.handleClick}
+              handleEnterSocial={this.handleEnterSocial}
             />)
         }
         {this.props.isFetching && <Loader />}
@@ -70,7 +75,7 @@ class PostsContainer extends Component {
           <NotifyBox notifyBtn={this.props.notifyBtn} clickTracking={this.props.clickTracking} />
         )}
         {this.props.isLastPage && <Footer clickTracking={this.props.clickTracking} />}
-      </main>
+      </Main>
     );
   }
 }

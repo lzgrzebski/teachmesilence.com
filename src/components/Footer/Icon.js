@@ -1,13 +1,14 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import getIcon from '../../styles/tools/sprite';
 
-export default styled.a`
+const IconLink = styled.a`
+  border: 0;
+`;
 
-  background-image: url(${({ name }) => getIcon(name)});
+const IconWrapper = styled.svg`
 
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: 100%;
+  fill: #b3b3b3;
   width: 30px;
   height: 30px;
   opacity: 0.75;
@@ -31,3 +32,17 @@ export default styled.a`
   }
 
 `;
+
+const Icon = props => (
+  <IconLink {...props}>
+    <IconWrapper>
+      <use xlinkHref={`#${props.name}`} />
+    </IconWrapper>
+  </IconLink>
+);
+
+Icon.propTypes = {
+  name: PropTypes.string.isRequired,
+};
+
+export default Icon;
