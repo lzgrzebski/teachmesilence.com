@@ -37,8 +37,7 @@ export default styled.div`
     `)};
 
     background: ${({ pinned }) => (pinned ? '#fff' : 'transparent')};
-    box-shadow: ${({ pinned }) => (pinned ? '0 2px 2px -2px rgba(0,0,0,.15)' : 'none')};
 
-    will-change: transform, background, box-shadow;
+    will-change: transform, background;
 
 `;
