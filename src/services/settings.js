@@ -62,10 +62,10 @@ const settings = {
   lazyClassName: 'lazy',
   lazySelector: '.lazy',
   lazySuccessClass: 'lazy--loaded',
-  lazyOffset: 1000,
+  lazyOffset: 2500,
   lazyPictureElemClass: 'picture--loaded',
 
-  infiniteScrollOffset: 1000,
+  infiniteScrollOffset: 1500,
 
 };
 
