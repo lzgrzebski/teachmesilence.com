@@ -25,20 +25,30 @@ export default function Post(props) {
             <Photo key={photo.id} {...photo} />,
           )}
         </section>
-        <Waypoint
-          topOffset="100px"
-          onEnter={waypointData =>
-          props.handleEnterSocial(props.slug, props.sharesLoaded, waypointData)}
-        >
-          <div>
-            <Social
-              slug={props.slug}
-              shares={props.shares}
-              liked={props.liked}
-              handleClick={props.handleClick}
-            />
-          </div>
-        </Waypoint>
+        {props.lazySocialLoading ? (
+          <Waypoint
+            topOffset="100px"
+            onEnter={waypointData => (
+              props.handleEnterSocial(props.slug, props.sharesLoaded, waypointData)
+            )}
+          >
+            <div>
+              <Social
+                slug={props.slug}
+                shares={props.shares}
+                liked={props.liked}
+                handleClick={props.handleClick}
+              />
+            </div>
+          </Waypoint>
+        ) : (
+          <Social
+            slug={props.slug}
+            shares={props.shares}
+            liked={props.liked}
+            handleClick={props.handleClick}
+          />
+        )}
       </Content>
     </Wrapper>
   );
@@ -53,5 +63,11 @@ Post.propTypes = {
   liked: PropTypes.bool.isRequired,
   sharesLoaded: PropTypes.bool.isRequired,
   handleClick: PropTypes.func.isRequired,
-  handleEnterSocial: PropTypes.func.isRequired,
+  handleEnterSocial: PropTypes.func,
+  lazySocialLoading: PropTypes.bool,
+};
+
+Post.defaultProps = {
+  lazySocialLoading: false,
+  handleEnterSocial: null,
 };

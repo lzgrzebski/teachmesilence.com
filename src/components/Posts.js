@@ -6,7 +6,13 @@ import Post from './Post';
 
 
 const Wrapper = styled.div`
+  & > div:not(:first-child)  {
+    border-top: 1px solid #eee;
 
+    h1 {
+      margin-top: 45px;
+    }
+  }
 `;
 
 export default function Posts({ posts, handleEnter, handleClick, handleEnterSocial }) {
@@ -19,7 +25,12 @@ export default function Posts({ posts, handleEnter, handleClick, handleEnterSoci
             onEnter={waypointData => handleEnter(post.slug, waypointData)}
           >
             <div>
-              <Post {...post} handleClick={handleClick} handleEnterSocial={handleEnterSocial} />
+              <Post
+                {...post}
+                handleClick={handleClick}
+                handleEnterSocial={handleEnterSocial}
+                lazySocialLoading
+              />
             </div>
           </Waypoint>
         ),

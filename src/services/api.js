@@ -8,7 +8,7 @@ const accessToken = config.ACCESS_TOKEN;
 
 const POST_CONTENT_TYPE = 'post';
 const LIMIT = 1;
-const ORDERBY = 'sys.createdAt';
+const ORDERBY = '-sys.createdAt';
 
 let store;
 
