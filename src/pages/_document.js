@@ -15,6 +15,7 @@ export default class extends Document {
         <Head>
           <style dangerouslySetInnerHTML={{ __html: mainStyles }} />
           {styleTags}
+          <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async />
         </Head>
         <body>
           <div className="root">

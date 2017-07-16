@@ -26,7 +26,6 @@ export default function Layout({ children, title, desc, img, url }) {
         <meta property="og:image" content={`https:${img}`} />
         <link rel="icon" type="image/png" href="/static/favicon.png" />
         <link rel="manifest" href="/manifest.json" />
-        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async />
       </Head>
       <HeaderContainer />
       { children }
