@@ -64,7 +64,7 @@ export function until(breakpoint) {
 }
 
 function imageUrl(url, width, height, thumb) {
-  let endUrl = `${url}?fm=jpg&fl=progressive&w=${width}`;
+  let endUrl = `${url}?fm=jpg&fl=progressive&w=${width}&q=${settings.imageQuality}`;
   if (height) endUrl += `&h=${height}`;
   if (thumb) endUrl += '&fit=thumb';
 
@@ -112,4 +112,15 @@ export function getFbCountUrl(slug) {
 
 export function windowOpen(url) {
   return window.open(url, 'tms-share', 'status = 1, height = 500, width = 555, resizable = 0');
+}
+
+export function calculateOffset() {
+  if (window) {
+    const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    if (w < settings.imageSizes[2]) {
+      return settings.lazyOffsetMobile; // smaller offset for mobile devices
+    }
+  }
+
+  return settings.lazyOffset;
 }

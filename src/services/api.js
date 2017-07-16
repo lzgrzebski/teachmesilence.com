@@ -7,7 +7,7 @@ const space = config.SPACE_ID;
 const accessToken = config.ACCESS_TOKEN;
 
 const POST_CONTENT_TYPE = 'post';
-const LIMIT = 1;
+const LIMIT = 5;
 const ORDERBY = '-sys.createdAt';
 
 let store;

@@ -2,6 +2,7 @@ import _debounce from 'lodash.debounce';
 import React, { Component } from 'react';
 import Blazy from 'blazy';
 import settings from '../services/settings';
+import { calculateOffset } from '../services/helpers';
 
 export default WrappedComponent => (
 
@@ -16,7 +17,7 @@ export default WrappedComponent => (
 
     componentDidMount() {
       this.lazy = new Blazy({
-        offset: settings.lazyOffset,
+        offset: calculateOffset(),
         selector: settings.lazySelector,
         successClass: settings.lazySuccessClass,
         success: e => e.parentNode.classList.add(settings.lazyPictureElemClass),

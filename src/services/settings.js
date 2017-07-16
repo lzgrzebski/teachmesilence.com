@@ -41,6 +41,7 @@ const settings = {
   spacingUnitHuge: `${Math.round(UNIT * 4)}px`,
   spacingCover: '45px',
 
+  imageQuality: 85,
   imageSizes: [360, 375, 768, 1049, 1050],
   coverPhotoSizes: [768, 1050, 1300, 1919, 1920],
   coverPhotoMobileSizes: [360, 375, 692, 693],
@@ -62,7 +63,8 @@ const settings = {
   lazyClassName: 'lazy',
   lazySelector: '.lazy',
   lazySuccessClass: 'lazy--loaded',
-  lazyOffset: 2500,
+  lazyOffset: 2000,
+  lazyOffsetMobile: 1000,
   lazyPictureElemClass: 'picture--loaded',
 
   infiniteScrollOffset: 1500,
