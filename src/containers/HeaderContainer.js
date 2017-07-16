@@ -35,8 +35,10 @@ class HeaderContainer extends Component {
     }
     window.addEventListener('scroll', this.handleScroll);
     if (window) {
-      oneSignal(this.props.notifyStatus);
-      ga()('send', 'pageview');
+      setTimeout(() => {
+        oneSignal(this.props.notifyStatus);
+        ga()('send', 'pageview');
+      }, 0);
     }
   }
   componentWillReceiveProps(nextProps) {
