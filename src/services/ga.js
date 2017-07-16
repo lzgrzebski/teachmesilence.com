@@ -3,7 +3,7 @@ import settings from './settings';
 let ga;
 
 export default () => {
-  if (ga) return ga;
+  if (ga) return window.ga;
 
   // hacky snippet ga + hotjar
   /* eslint-disable */
@@ -30,5 +30,5 @@ export default () => {
 
   ga = window.ga;
   ga('create', settings.googleAnalyticsId, 'auto');
-  return ga;
+  return window.ga;
 };

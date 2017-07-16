@@ -51,11 +51,4 @@ export default (enableNotifications) => {
       }
     });
   });
-  setTimeout(() => {
-    const head = document.getElementsByTagName('head')[0];
-    const script = document.createElement('script');
-    script.async = 1;
-    script.src = 'https://cdn.onesignal.com/sdks/OneSignalSDK.js';
-    head.appendChild(script);
-  }, 0);
 };
