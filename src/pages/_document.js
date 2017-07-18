@@ -37,7 +37,7 @@ export default class extends Document {
               <path d="M16 29.7q-0.5 0-0.8-0.3l-11.1-10.7q-0.2-0.1-0.5-0.5t-1-1.2-1.2-1.7-1-2.2-0.4-2.5q0-3.9 2.3-6.1t6.3-2.2q1.1 0 2.3 0.4t2.1 1 1.7 1.2 1.4 1.2q0.6-0.6 1.4-1.2t1.7-1.2 2.1-1 2.3-0.4q4 0 6.3 2.2t2.3 6.1q0 3.9-4.1 8l-11.1 10.7q-0.3 0.3-0.8 0.3z" />
             </symbol>
           </svg>
-          <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async />
+          <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" defer />
         </body>
       </html>
     );

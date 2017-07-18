@@ -4,7 +4,7 @@ import { fontSize, fontWeight, from } from '../../services/helpers';
 export default styled.p`
 
     font-family: tms-text,Georgia,Cambria,"Times New Roman",Times,serif;
-    ${fontWeight()}
+    ${fontWeight()};
     letter-spacing: -.004em;
     line-height:1.58;
 
