@@ -11,7 +11,7 @@ export default styled.h1`
 
     margin-left:-2px;
     margin-top: ${settings.spacingUnitTiny};
-    margin-bottom: 4px;
+    margin-bottom: 10px;
 
     ${from('tablet')(css`
       ${fontSize('43px')}
