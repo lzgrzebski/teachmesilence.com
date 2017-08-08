@@ -1,7 +1,21 @@
 module.exports = {
   webpack: (config) => {
-    config.devtool = 'inline-source-map';
-    return config
+    if (!process.env.SOURCE_MAPS) {
+      return config;
+    }
+
+    const configOptions = config;
+    configOptions.devtool = 'source-map';
+    configOptions.output.sourceMapFilename = '[file].map';
+
+    // Perform customizations to config existing plugins
+    for (const options of configOptions.plugins) {
+      if (options instanceof webpack.optimize.UglifyJsPlugin) {
+        options.sourceMap = true;
+        break;
+      }
+    }
+
+    return configOptions;
   },
-  sourceMaps: ({ dev }) => dev ? 'cheap-module-inline-source-map' : 'source-map'
 }
