@@ -30,14 +30,10 @@ class PostsContainer extends Component {
   }
 
   componentDidMount() {
-    if(window && this.handleScroll) {
-      window.addEventListener('scroll', this.handleScroll);
-    }
+    window.addEventListener('scroll', this.handleScroll);
   }
   componentWillUnmount() {
-    if(window && this.handleScroll){
-      window.removeEventListener('scroll', this.handleScroll);
-    }
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   handleScroll = _throttle(() => {

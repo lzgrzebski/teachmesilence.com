@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import settings from '../../services/settings';
 
 export default styled.section`
   display:flex;

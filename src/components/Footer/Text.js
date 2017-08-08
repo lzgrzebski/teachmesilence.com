@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import settings from '../../services/settings';
 import { fontSize } from '../../services/helpers';
 
 export default styled.span`

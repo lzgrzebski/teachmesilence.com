@@ -35,24 +35,22 @@ class HeaderContainer extends Component {
     }
     window.addEventListener('scroll', this.handleScroll);
     if (window) {
-      oneSignal(this.props.notifyStatus);
-      ga()('send', 'pageview');
+      setTimeout(() => {
+        oneSignal(this.props.notifyStatus);
+        ga()('send', 'pageview');
+      }, 0);
     }
   }
   componentWillReceiveProps(nextProps) {
-    if(window){
-      if (nextProps.isMenuOpen) { // because toggle(class, bool) not working in ie :<
-        document.documentElement.classList.add(settings.isMenuOpenClassName);
-      } else {
-        document.documentElement.classList.remove(settings.isMenuOpenClassName);
-      }
+    if (nextProps.isMenuOpen) { // because toggle(class, bool) not working in ie :<
+      document.documentElement.classList.add(settings.isMenuOpenClassName);
+    } else {
+      document.documentElement.classList.remove(settings.isMenuOpenClassName);
     }
   }
   componentWillUnmount() {
-    if(window) {
-      document.documentElement.classList.remove(settings.isMenuOpenClassName);
-      window.removeEventListener('scroll', this.handleScroll);
-    }
+    document.documentElement.classList.remove(settings.isMenuOpenClassName);
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   handleClick = () => {

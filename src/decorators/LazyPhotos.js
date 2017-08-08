@@ -23,15 +23,11 @@ export default WrappedComponent => (
         success: e => e.parentNode.classList.add(settings.lazyPictureElemClass),
       });
 
-      if(window && this.handleResize) {
-        window.addEventListener('resize', this.handleResize);
-      }
+      window.addEventListener('resize', this.handleResize);
     }
 
     componentWillUnmount() {
-      if(window && this.handleResize) {
-        window.removeEventListener('resize', this.handleResize);
-      }
+      window.removeEventListener('resize', this.handleResize);
     }
 
     componentDidUpdate() {
