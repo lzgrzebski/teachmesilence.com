@@ -42,15 +42,19 @@ class HeaderContainer extends Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.isMenuOpen) { // because toggle(class, bool) not working in ie :<
-      document.documentElement.classList.add(settings.isMenuOpenClassName);
-    } else {
-      document.documentElement.classList.remove(settings.isMenuOpenClassName);
+    if(window){
+      if (nextProps.isMenuOpen) { // because toggle(class, bool) not working in ie :<
+        document.documentElement.classList.add(settings.isMenuOpenClassName);
+      } else {
+        document.documentElement.classList.remove(settings.isMenuOpenClassName);
+      }
     }
   }
   componentWillUnmount() {
-    document.documentElement.classList.remove(settings.isMenuOpenClassName);
-    window.removeEventListener('scroll', this.handleScroll);
+    if(window) {
+      document.documentElement.classList.remove(settings.isMenuOpenClassName);
+      window.removeEventListener('scroll', this.handleScroll);
+    }
   }
 
   handleClick = () => {

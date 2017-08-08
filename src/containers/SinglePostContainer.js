@@ -78,7 +78,9 @@ class SinglePostContainer extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
+    if(window && this.handleScroll){
+      window.removeEventListener('scroll', this.handleScroll);
+    }
   }
 
   shoudlLoadRecommendedPosts() {
