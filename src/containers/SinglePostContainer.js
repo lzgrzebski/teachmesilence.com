@@ -45,11 +45,9 @@ class SinglePostContainer extends Component {
 
   componentDidMount() {
     if (this.props.post) {
-      setTimeout(() => {
-        this.props.getVisitedPosts(this.props.post.slug);
-        window.addEventListener('scroll', this.handleScroll);
-        this.slug = this.props.post.slug;
-      }, 5)
+      this.props.getVisitedPosts(this.props.post.slug);
+      window.addEventListener('scroll', this.handleScroll);
+      this.slug = this.props.post.slug;
     }
   }
 
@@ -68,9 +66,7 @@ class SinglePostContainer extends Component {
       }
 
       if (!this.props.post.sharesLoaded) {
-        setTimeout(() => {
-          this.props.fetchSharesNumber(this.props.post.slug);
-        }, 5)
+        this.props.fetchSharesNumber(this.props.post.slug);
       }
 
       this.slug = slug;
