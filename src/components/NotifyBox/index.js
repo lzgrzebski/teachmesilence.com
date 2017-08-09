@@ -10,11 +10,11 @@ import ButtonWrapper from './ButtonWrapper';
 import Button from './Button';
 
 export default function NotifyBox({ notifyBtn, clickTracking }) {
-  // const handleSubscribe = (e) => {
-  //   clickTracking(NOTIFYBOX_NOTIFY_CLICK);
-  //   window.OneSignal.push(['registerForPushNotifications']);
-  //   e.preventDefault();
-  // };
+  const handleSubscribe = (e) => {
+    clickTracking(NOTIFYBOX_NOTIFY_CLICK);
+    window.OneSignal.push(['registerForPushNotifications']);
+    e.preventDefault();
+  };
 
   const handleInstagramClick = () => {
     clickTracking(NOTIFYBOX_INSTAGRAM_CLICK);
@@ -25,7 +25,7 @@ export default function NotifyBox({ notifyBtn, clickTracking }) {
       <ContentWrapper>
         <Title>{settings.notifyBoxTitle}</Title>
         <ButtonWrapper>
-          {/* {notifyBtn && <Button onClick={handleSubscribe}>{settings.notifyBoxBtnPush}</Button>} */}
+          {notifyBtn && <Button onClick={handleSubscribe}>{settings.notifyBoxBtnPush}</Button>}
           <a href={settings.instagramUrl} onClick={handleInstagramClick} rel="noopener noreferrer" target="_blank">
             <Button primary>
               {settings.notifyBoxBtnInstagram}

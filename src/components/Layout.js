@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Head from 'next/head';
+import Head from 'next/head';
 
 import settings from '../services/settings';
 import { getAbsoluteUrl } from '../services/helpers';
@@ -10,7 +10,7 @@ import HeaderContainer from '../containers/HeaderContainer';
 export default function Layout({ children, title, desc, img, url }) {
   return (
     <div>
-      {/* <Head>
+      <Head>
         <title>{ title }</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -26,7 +26,7 @@ export default function Layout({ children, title, desc, img, url }) {
         <meta property="og:image" content={`https:${img}`} />
         <link rel="icon" type="image/png" href="/static/favicon.png" />
         <link rel="manifest" href="/manifest.json" />
-      </Head> */}
+      </Head>
       <HeaderContainer />
       { children }
     </div>
@@ -44,6 +44,6 @@ Layout.propTypes = {
 Layout.defaultProps = {
   title: settings.siteTitle,
   desc: settings.siteDescription,
-  url: '',
+  url: getAbsoluteUrl(),
   img: settings.siteImage,
 };
