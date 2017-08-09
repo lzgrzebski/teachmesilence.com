@@ -27,7 +27,6 @@ export default function Layout({ children, title, desc, img, url }) {
         <link rel="icon" type="image/png" href="/static/favicon.png" />
         <link rel="manifest" href="/manifest.json" />
       </Head>
-      <HeaderContainer />
       { children }
     </div>
   );
