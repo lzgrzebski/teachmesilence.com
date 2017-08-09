@@ -102,7 +102,7 @@ class SinglePostContainer extends Component {
   render() {
     return (
       <Main>
-        {this.props.post && <Post {...this.props.post} handleClick={this.handleClick} />}
+        {/* {this.props.post && <Post {...this.props.post} handleClick={this.handleClick} />} */}
         {/* {this.props.recommendedPosts &&
           <RecommendedPosts
             isDownloaded={this.props.isDownloadedRecommendedPosts}
