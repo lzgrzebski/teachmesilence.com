@@ -103,7 +103,7 @@ class SinglePostContainer extends Component {
     return (
       <Main>
         {this.props.post && <Post {...this.props.post} handleClick={this.handleClick} />}
-        {this.props.recommendedPosts &&
+        {/* {this.props.recommendedPosts &&
           <RecommendedPosts
             isDownloaded={this.props.isDownloadedRecommendedPosts}
             isFetching={this.props.isFetchingRecommendedPosts}
@@ -111,7 +111,7 @@ class SinglePostContainer extends Component {
           />
         }
         <NotifyBox notifyBtn={this.props.notifyBtn} clickTracking={this.props.clickTracking} />
-        <Footer clickTracking={this.props.clickTracking} />
+        <Footer clickTracking={this.props.clickTracking} /> */}
       </Main>
     );
   }
