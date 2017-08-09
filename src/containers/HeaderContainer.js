@@ -105,11 +105,7 @@ class HeaderContainer extends Component {
 
   render() {
     return (
-      <Header
-        {...this.props}
-        handleClick={this.handleClick}
-        clickTracking={this.props.clickTracking}
-      />
+      <div>s</div>
     );
   }
 }
