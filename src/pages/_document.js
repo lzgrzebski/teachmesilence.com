@@ -5,20 +5,29 @@ import { ServerStyleSheet } from 'styled-components';
 import mainStyles from '../styles/mainStyles';
 
 export default class extends Document {
-  render() {
+  static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet();
-    const main = sheet.collectStyles(<Main />);
-    const styleTags = sheet.getStyleElement();
 
+    const page = renderPage(Component => props =>
+      sheet.collectStyles(<Component {...props} />,
+    ));
+
+    const styles = sheet.getStyleElement();
+
+    return { ...page, styles };
+  }
+
+  render() {
+    const { styles } = this.props;
     return (
       <html lang="en">
         <Head>
           <style dangerouslySetInnerHTML={{ __html: mainStyles }} />
-          {styleTags}
+          {styles}
         </Head>
         <body>
           <div className="root">
-            {main}
+            <Main />
           </div>
           <NextScript />
           <svg style={{ display: 'none' }}>

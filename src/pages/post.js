@@ -27,7 +27,11 @@ PostPage.getInitialProps = async ({ store, query: { slug } }) => {
     throw err;
   }
 
-  const desc = post.description.replace(/(\r\n|\n|\r)/gm, ' ').substring(0, 120);
+  const desc = post.description
+                .replace(/(\r\n|\n|\r)/gm, ' ')
+                .replace(/<(?:.|\n)*?>/gm, '')
+                .substring(0, 120)
+                .concat('...');
   return {
     title: post.title,
     desc,
