@@ -44,6 +44,6 @@ Layout.propTypes = {
 Layout.defaultProps = {
   title: settings.siteTitle,
   desc: settings.siteDescription,
-  url: getAbsoluteUrl(),
+  url: '',
   img: settings.siteImage,
 };
