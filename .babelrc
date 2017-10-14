@@ -1,11 +1,7 @@
 {
-  "presets": ["latest", "react", "stage-0"],
+  "presets": ["next/babel"],
   "plugins": [
-    "transform-async-to-generator",
-    "transform-object-rest-spread",
     "transform-decorators-legacy",
-    "transform-class-properties",
-    "transform-runtime",
     ["styled-components", {
       "ssr": true
     }]
