@@ -10,7 +10,7 @@ function stripUnit(value) {
 
 export function imgPadding(width, height) {
   const ratio = width / height;
-  return (100 / ratio).toFixed(2);
+  return (100 / ratio);
 }
 
 export function imgRatio(width, height) {
